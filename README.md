@@ -29,6 +29,8 @@ TODO:
 -----
  - [x] Use largest image width in settings as upload size
  - [ ] UI improvement
+	 - [x] Sidebar page select
+	 - [ ] Disable "upload images" if no page selected
  - [ ] Hooks to control behaviour
 	 - [ ] Actions offered after file drop (-Upload PDF +Create Gallery)
 	 - [ ] Actions when the last file has been uploaded.

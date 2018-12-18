@@ -5,8 +5,16 @@
 		},
 		l10n = opts.l10n,
 		imageInfos = {},
-		PageItem;
+		PageItem,
+		pdfAllowed = _wpPluploadSettings.defaults.filters.mime_types[0].extensions.split(',').indexOf('pdf') !== -1;
 
+	// temporaily add pdf type to plupload settings,
+	// so the uploader doesn't cancel too early.
+	// File types are checked server-side too, so
+	// there should be no security implications.
+	if ( ! pdfAllowed ) {
+		_wpPluploadSettings.defaults.filters.mime_types[0].extensions += ',pdf';
+	}
 
 	PageItem = wp.media.View.extend({
 		template:  wp.template('pdf-page-item'),
@@ -20,13 +28,18 @@
 	});
 
 	pdfRenderer.view.PDFFrame = wp.media.view.MediaFrame.extend({
-		template:  wp.template('pdf-modal'),
-		regions:   [ 'title','content','instructions','buttons', 'pagenav' ],
-		events:{
-			'click [data-page]' : 'clickPage'
+		template: wp.template('pdf-modal'),
+		regions: [ 'title','content','instructions','buttons', 'pagenav' ],
+		events: {
+			'click [data-page]' : 'clickPage',
+			'click .media-modal-close' : function() {
+				this.trigger('cancel-upload');
+				this.close();
+			}
 		},
-		initialize: function( ) {
+		initialize: function() {
 
+			var self = this;
 
 			_.defaults( this.options, {
 				uploader:	false,
@@ -38,13 +51,54 @@
 			this._pdf = this._canvas = null;
 			this._current_page = 0;
 
-			this._pages = new Backbone.Collection()
+			this._uploadBtn = new wp.media.view.Button({
+				text: l10n.UploadImages,
+				className: 'button-primary',
+				click:function() {
+					self.trigger('cancel-upload');
+					self.uploadImages();
+				}
+			});
+			if ( pdfAllowed ) {
+				this._skipBtn = new wp.media.view.Button({
+					text: l10n.UploadPDF,
+					className: 'upload-pdf',
+					click:function() {
+						self.trigger('continue-upload');
+						self.close();
+						// dismiss, continue with wp default behaviour
+					}
+				});
+			}
+			this._cancelBtn = new wp.media.view.Button({
+				text: l10n.CancelUpload,
+				className: 'cancel-upload',
+				click:function() {
+					self.trigger('cancel-upload');
+					self.close();
+				}
+			});
+
+			this._pages = new Backbone.Collection();
+			this.listenTo(this._pages,'change:selected',function(e){
+				// disable img upload btn if no pages selected
+				this._uploadBtn.$el.prop('disabled', this._pages.where({selected:true}).length === 0 )
+			})
 
 			this.createTitle();
 			this.createButtons();
 
+			this.on('escape',function(){
+				self.trigger('cancel-upload');
+			})
+
 			return this;
 
+		},
+		escape:function() {
+			console.log(this);
+			this.trigger('cancel-upload');
+			return wp.media.view.MediaFrame.prototype.escape.apply(this,arguments);
 		},
 		createTitle: function( ) {
 			this._title = new wp.media.View({
@@ -54,33 +108,14 @@
 			this.title.set( [ this._title ] );
 		},
 		createButtons: function() {
-			var self = this;
-			this.buttons.set( [
-				new wp.media.view.Button({
-					text: l10n.CancelUpload,
-					className: 'cancel-upload',
-					click:function() {
-						self.trigger('cancel-upload');
-						self.close();
-					}
-				}),
-				new wp.media.view.Button({
-					text: l10n.UploadPDF,
-					className: 'upload-pdf',
-					click:function() {
-						// dismiss, continue with wp defualt behaviour
-					}
-				}),
-				new wp.media.view.Button({
-					text: l10n.UploadImages,
-					className: 'button-primary',
-					click:function() {
-						self.trigger('cancel-upload');
-						self.uploadImages();
-						self.close();
-					}
-				})
-			] );
+			var self = this,
+				btns = [];
+			btns.push( this._cancelBtn );
+			if ( pdfAllowed ) {
+				btns.push( this._skipBtn );
+			}
+			btns.push( this._uploadBtn );
+			this.buttons.set( btns );
 		},
 		setFile:function( file ) {
 			var self = this,
@@ -101,7 +136,9 @@
 			var self = this,
 				i = 1, btns = [], m;
 
-			this._pages = new Backbone.Collection()
+			while ( this._pages.length ) {
+				this._pages.pop();
+			}
 
 			for (i;i<=numPages;i++) {
 				m = new Backbone.Model({
@@ -109,7 +146,7 @@
 					selected:true,
 				});
 				this._pages.add( m );
-				console.log(this._pages.get(i))
+
 				btns.push(
 					new PageItem({
 						pagenum:i,
@@ -200,28 +237,38 @@
 						self.options.uploader.addFile( blob, name );
 					},type);
 					/*/
-					var img = new o.Image();
+					var img = new o.Image(),
+						m = this;
 					img.onload = function() {
 						img.name = name;
 						img.type = type;
 						self.options.uploader.addFile( img.getAsBlob(), name );
+
+						self._pages.remove(m.id);
+
+						if ( ! self._pages.length ) {
+							self.close();
+						}
 					}
+
 					img.load( this.get('canvas').toDataURL(type) );
 					//
 					$('body').append(img);
 				};
 
 			// create e new media model from blob data URL thingy
-			this._pages.each(function( pg, i ){
-				if ( ! pg.get('selected') ) {
-					return;
-				}
+
+			_.each( this._pages.where( { selected: true } ), function( pg, i ){
+
 				var name = self.file.file.name.replace(/\.[a-z0-9]+$/,'') + '-p' + i + '.png';
+
 				if ( ! pg.get('canvas') ) {
 					// needs rendering
-					self.renderPage(i*1, upload,[name]);
+					self.renderPage( pg.get('id'), upload,[name]);
+					console.log('render:',pg.get('id'))
 				} else {
 					upload.apply(pg,[name])
+					console.log('direct:',pg.get('id'))
 				}
 			});
 
@@ -247,34 +294,29 @@
 
 			ret = this._parentReady.apply( this , arguments );
 
-			function pdfPopup( uploader ) {
-				var fileItem, src;
+			function pdfPopup( uploader, fileItem ) {
+
 				if ( pdfModal ) {
 					pdfModal.close().dispose();
 				}
-				if ( !! pdfs.length ) {
-					fileItem = pdfs.shift();
-					pdfModal = new pdfRenderer.view.PDFFrame( {
-						controller: $(this),
-						uploader:uploader,
-						title: l10n.Upload + ': ' + fileItem.file.name.replace(/\.[a-z0-9]+$/,''),
-					} );
-					pdfModal.on('proceed',function() {
-						// next
-						pdfPopup( uploader );
 
-					}).on('cancel-upload',function() {
-						fileItem.file.attachment.destroy();
-					});
-					pdfModal.setFile( fileItem );
-					pdfModal.open();
-				} else {
+				pdfModal = new pdfRenderer.view.PDFFrame( {
+					controller: $(this),
+					uploader:uploader,
+					title: l10n.Upload + ': ' + fileItem.file.name.replace(/\.[a-z0-9]+$/,''),
+				} );
+				pdfModal.on('proceed',function() {
+					// next
+					pdfPopup( uploader );
+
+				}).on('cancel-upload',function() {
+					uploader.removeFile( fileItem.file ); // !!
+					fileItem.file.attachment.destroy();
+				}).on('continue-upload',function(){
 					uploader.start();
-				}
-			}
-
-			function addPDF( fileData, uploader ) {
-
+				});
+				pdfModal.setFile( fileItem );
+				pdfModal.open();
 			}
 
 			/**
@@ -291,28 +333,21 @@
 				return _ret;
 			}
 
-			// stop uploader and generate cropdata
-			this.uploader.uploader.bind('FilesAdded',function( up, files ) {
-				var fileData;
-				// put modal
-				for (var i=0;i<files.length;i++) {
-					if ( files[i].type == 'application/pdf') {
-						fileData = resolveFile( files[i] );
-						if ( fileData.blob instanceof Blob ) {
-							pdfs.push( fileData );
-						}
-					}
-				}
-				if ( pdfs.length ) {
-					up.stop();
-					up.refresh();
-					pdfPopup( up ); // will ask for focus or start uploader
-				}
-			});
 			// send cropdata
 			this.uploader.uploader.bind('BeforeUpload',function( up, file ) {
-				var s, cropdata, focuspoint;
-				// do something with files before upload...
+				console.log('BEFORE UPLOAD')
+				if ( file.type == 'application/pdf') {
+
+					fileData = resolveFile( file );
+					if ( fileData.blob instanceof Blob ) {
+						up.stop();
+						up.refresh();
+						pdfPopup( up, fileData ); // will ask for focus or start uploader
+					}
+				}
+
+				if ( pdfs.length ) {
+				}
 			});
 			return ret;
 		}
