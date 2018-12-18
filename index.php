@@ -39,7 +39,7 @@ Command line args were: ``
 */
 
 
-namespace PdfRenderer;
+namespace PDFRenderer;
 
 if ( ! defined('ABSPATH') ) {
 	die('FU!');
