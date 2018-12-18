@@ -111,7 +111,7 @@
 			this.actionBtn = [];
 
 			this.actionBtn.push( this._cancelBtn );
-			if ( pdfAllowed ) {
+			if ( !! this._skipBtn ) {
 				this.actionBtn.push( this._skipBtn );
 			}
 			this.actionBtn.push( this._uploadBtn );
@@ -238,7 +238,6 @@
 						self.options.uploader.addFile( img.getAsBlob(), name );
 
 						self._pages.remove(m.id);
-						m.set( 'image', img );
 						self._uploadPages.add(m);
 						if ( self._uploadPages.length === self._pages.where( { selected: true } ).length ) {
 							// trigger something
