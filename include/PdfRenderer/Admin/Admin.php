@@ -102,6 +102,8 @@ class Admin extends Core\Singleton {
 				$w    = intval( get_option( $_size . '_size_w' ) );
 			} elseif ( isset( $_wp_additional_image_sizes[ $_size ] ) ) {
 				$w    = intval( $_wp_additional_image_sizes[ $_size ]['width'] );
+			} else {
+				continue;
 			}
 
 			$max_w = max($w,$max_w);
