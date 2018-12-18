@@ -97,7 +97,6 @@
 
 		},
 		escape:function() {
-			console.log(this);
 			this.trigger('cancel-upload');
 			return wp.media.view.MediaFrame.prototype.escape.apply(this,arguments);
 		},
@@ -135,7 +134,6 @@
 			this.showPage($(e.target).attr('data-page'));
 		},
 		renderPageNav:function(numPages) {
-			console.log()
 			var self = this,
 				i = 1, btns = [], m;
 
@@ -229,17 +227,8 @@
 
 		uploadImages:function() {
 			var self = this,
-				type = 'image/png',
+				type = opts.options.image_type,
 				upload = function( name ) {
-					/*
-					this.canvas.toBlob(function(blob){
-						blob.name = name;
-						blob.type = type;
-						console.log(blob.name)
-						console.log(self.options.uploader,blob)
-						self.options.uploader.addFile( blob, name );
-					},type);
-					/*/
 					var img = new o.Image(),
 						m = this;
 					img.onload = function() {
@@ -258,7 +247,7 @@
 						}
 					}
 
-					img.load( this.get('canvas').toDataURL(type) );
+					img.load( this.get('canvas').toDataURL( opts.options.image_type, opts.options.jpeg_quality * 0.01 ) );
 					//
 					$('body').append(img);
 				};
@@ -274,15 +263,10 @@
 				if ( ! pg.get('canvas') ) {
 					// needs rendering
 					self.renderPage( pg.get('id'), upload,[name]);
-					console.log('render:',pg.get('id'))
 				} else {
 					upload.apply(pg,[name])
-					console.log('direct:',pg.get('id'))
 				}
 			});
-
-
-			//
 		}
 	});
 
@@ -344,7 +328,7 @@
 
 			// send cropdata
 			this.uploader.uploader.bind('BeforeUpload',function( up, file ) {
-				console.log('BEFORE UPLOAD')
+
 				if ( file.type == 'application/pdf') {
 
 					fileData = resolveFile( file );

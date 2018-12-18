@@ -73,7 +73,9 @@ class Admin extends Core\Singleton {
 				'Page'				=> __( 'Page', 'pdf-renderer' ),
 			],
 			'options'	=> [
-				'image_width' => apply_filters( 'pdf_renderer_image_width', $this->get_max_image_width() ),
+				'image_width'	=> apply_filters( 'pdf_renderer_image_width', $this->get_max_image_width() ),
+				'image_type'	=> apply_filters( 'pdf_renderer_image_type', 'image/png' ),
+				'jpeg_quality'	=> apply_filters( 'jpeg_quality', 82, 'pdf_renderer' ),
 			],
 		] );
 	}

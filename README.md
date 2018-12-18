@@ -1,7 +1,7 @@
 PDF Renderer
-===============
+============
 
-#### Developer info here. ####
+Client-Side conversion of PDF Files when dropped into the media library.
 
 
 Installation
@@ -24,14 +24,37 @@ Installation
  - $ `npm install`
  - $ `gulp`
 
+Plugin API
+----------
 
-TODO:
------
- - [x] Use largest image width in settings as upload size
- - [x] UI improvement
-	 - [x] Sidebar page select
-	 - [x] Disable "upload images" if no page selected
- - [ ] Hooks to control behaviour
-	 - [ ] Actions offered after file drop (-Upload PDF +Create Gallery)
-	 - [ ] Actions when the last file has been uploaded.
- - [ ] Don't load PDFjslib in FF
+### Filter `pdf_renderer_image_width`
+
+Use this to overrule width of generated images. Uses the largest image width known to WP by default.
+
+#### Example:
+```php
+add_filter( 'pdf_renderer_image_width', function( $width ) {
+	return 12345;
+});
+```
+
+### Filter `pdf_renderer_image_type`
+
+Type of generated images. Possible values are `image/png` and `image/jpeg`. default is `image/png`.  
+To override the JPEG-Quality you can use the WP Core filter `jpeg_quality`. The string `pdf_renderer` is passed as a second argument to `apply_filters()`.
+
+#### Example:
+```php
+// we want jpeg ...
+add_filter( 'pdf_renderer_image_type', function( $type ) {
+	return 'image/jpeg';
+});
+// ... and a specific treatment for PDFs.
+add_filter( 'jpeg_quality', function( $quality, $context = '' ) {
+	if ( 'pdf_renderer' === $context ) {
+		// Everybody loves artifacts.
+		return 1;
+	}
+	return $quality;
+}, 10, 2);
+```
