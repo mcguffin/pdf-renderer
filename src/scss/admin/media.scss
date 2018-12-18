@@ -4,7 +4,8 @@
 
 .pdf-modal {
 	.media-modal-content {
-		& > * {
+		.media-frame-title,
+		.media-frame-toolbar {
 			left:0;
 		}
 		.media-frame-content {

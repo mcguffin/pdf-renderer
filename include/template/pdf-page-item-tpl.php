@@ -5,7 +5,6 @@ if ( ! defined('ABSPATH') )
 
 ?>
 <script type="text/html" id="tmpl-pdf-page-item">
-	<# console.log(data) #>
 	<input name="current-page" type="radio" id="show-{{{ data.pagenum }}}" <# if (data.pagenum===1) { #>checked<# } #> />
 	<input type="checkbox" id="sel-{{{ data.pagenum }}}" <# if (data.selected) { #>checked<# } #> />
 	<label for="sel-{{{ data.pagenum }}}">

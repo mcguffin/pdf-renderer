@@ -37,7 +37,8 @@
 
 			this._pdf = this._canvas = null;
 			this._current_page = 0;
-			this._pages = {};
+
+			this._pages = new Backbone.Collection()
 
 			this.createTitle();
 			this.createButtons();
@@ -98,55 +99,35 @@
 		renderPageNav:function(numPages) {
 			console.log()
 			var self = this,
-				i = 1, btns = [];
-			this._pages = {};
+				i = 1, btns = [], m;
+
+			this._pages = new Backbone.Collection()
+
 			for (i;i<=numPages;i++) {
-				this._pages[i] = {
-					page:false,
-					canvas:false,
+				m = new Backbone.Model({
+					id:i,
 					selected:true,
-				}
-				//*
+				});
+				this._pages.add( m );
+				console.log(this._pages.get(i))
 				btns.push(
 					new PageItem({
 						pagenum:i,
 						selected:true,
+						model:m,
 						events:{
-							'click' : function(e) {
-								if ( $(e.target).is('.dashicons') ) {
-									self.togglePage( this.options.pagenum );
+							'change [type="radio"]' : function(){
+								if ( this.$('[type="radio"]').prop('checked') ) {
+									self.showPage( this.options.pagenum );
 								}
-								self.showPage( this.options.pagenum );
 							},
+							'change [type="checkbox"]' : function(){
+								this.model.set( 'selected', this.$('[type="checkbox"]').prop('checked') );
+							}
 						}
 					})
 				);
-				/*/
-				btns.push(
-					new wp.media.view.Button({
-						text: '',
-						className: 'button-primary dashicons-yes dashicons',
-						_page:i,
-						click:function() {
-							self.togglePage(this.options._page);
-							this.$el.toggleClass('button-primary').next('button').toggleClass('button-primary');
 
-						}
-					}).render()
-				);
-
-				btns.push(
-					new wp.media.view.Button({
-						text: i.toString(),
-						className: 'button-primary',
-						_page:i,
-						click:function() {
-							self.showPage(this.options._page);
-						}
-					}).render()
-				);
-
-				//*/
 			}
 			this.pagenav.set( btns );
 		},
@@ -160,21 +141,18 @@
 				self.showPage(1);
 			});
 		},
-		togglePage:function(idx) {
-			this._pages[idx].selected = ! this._pages[idx].selected;
-			_.each(this._pages, function(el,i){
-				console.log(i,el);
-			})
-		},
 		showPage:function(idx) {
-			var self = this;
-			if ( !! this._pages[idx].canvas ) {
+			var self = this,
+				m = this._pages.get(idx);
+
+			if ( !! m.get('canvas') ) {
 				this.content.set( [
 					new wp.media.View({
-						el: this._pages[idx].canvas,
+						el: m.get('canvas'),
 					})
 				] );
 			} else {
+				this.content.set([new Backbone.View()])
 				this.renderPage( idx, function(){
 					self.showPage(idx);
 				} );
@@ -182,7 +160,8 @@
 
 		},
 		renderPage:function(idx,cb,cb_args) {
-			var self = this;
+			var self = this,
+				m = this._pages.get(idx);
 
 			self._pdf.getPage(idx).then(function(page){
 				var vp = page.getViewport(1),
@@ -198,10 +177,10 @@
 					canvasContext: ctx,
 					viewport: vp,
 				}).then(function(){
-					self._pages[idx].page = page;
-					self._pages[idx].canvas = canvas;
+					m.set( 'page', page );
+					m.set( 'canvas', canvas );
 
-					!!cb && cb.apply(self._pages[idx],cb_args||[]);
+					!!cb && cb.apply(m,cb_args||[]);
 //					self.showPage(idx);
 				});
 			});
@@ -227,19 +206,22 @@
 						img.type = type;
 						self.options.uploader.addFile( img.getAsBlob(), name );
 					}
-					img.load( this.canvas.toDataURL(type) );
+					img.load( this.get('canvas').toDataURL(type) );
 					//
 					$('body').append(img);
 				};
 
 			// create e new media model from blob data URL thingy
-			_.each(this._pages,function( pg, i ){
+			this._pages.each(function( pg, i ){
+				if ( ! pg.get('selected') ) {
+					return;
+				}
 				var name = self.file.file.name.replace(/\.[a-z0-9]+$/,'') + '-p' + i + '.png';
-				if ( ! pg.canvas ) {
+				if ( ! pg.get('canvas') ) {
 					// needs rendering
 					self.renderPage(i*1, upload,[name]);
 				} else {
-					upload.apply(pg)
+					upload.apply(pg,[name])
 				}
 			});
 
