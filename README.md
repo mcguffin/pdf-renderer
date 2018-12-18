@@ -27,7 +27,7 @@ Installation
 
 TODO:
 -----
- - [ ] Use largest image (cropped? uncropped?) size in settings as upload size
+ - [x] Use largest image width in settings as upload size
  - [ ] UI improvement
  - [ ] Hooks to control behaviour
 	 - [ ] Actions offered after file drop (-Upload PDF +Create Gallery)

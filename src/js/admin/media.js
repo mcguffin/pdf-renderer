@@ -4,8 +4,20 @@
 			view: {}
 		},
 		l10n = opts.l10n,
-		imageInfos = {};
+		imageInfos = {},
+		PageItem;
 
+
+	PageItem = wp.media.View.extend({
+		template:  wp.template('pdf-page-item'),
+		className:'pdf-page-item',
+		initialize:function() {
+			return wp.media.View.prototype.initialize.apply(this,arguments);
+		},
+		render:function() {
+			return wp.media.View.prototype.render.apply(this,arguments);
+		}
+	});
 
 	pdfRenderer.view.PDFFrame = wp.media.view.MediaFrame.extend({
 		template:  wp.template('pdf-modal'),
@@ -86,7 +98,7 @@
 		renderPageNav:function(numPages) {
 			console.log()
 			var self = this,
-				i = 1, btns = [], bgrp;
+				i = 1, btns = [];
 			this._pages = {};
 			for (i;i<=numPages;i++) {
 				this._pages[i] = {
@@ -94,8 +106,21 @@
 					canvas:false,
 					selected:true,
 				}
-				/*
-				btns.push( $('<button>'+i+'</button>').get(0) );
+				//*
+				btns.push(
+					new PageItem({
+						pagenum:i,
+						selected:true,
+						events:{
+							'click' : function(e) {
+								if ( $(e.target).is('.dashicons') ) {
+									self.togglePage( this.options.pagenum );
+								}
+								self.showPage( this.options.pagenum );
+							},
+						}
+					})
+				);
 				/*/
 				btns.push(
 					new wp.media.view.Button({
@@ -123,10 +148,7 @@
 
 				//*/
 			}
-			bgrp = new wp.media.view.ButtonGroup({
-				buttons:btns,
-			});
-			this.pagenav.set([ bgrp.render() ]);
+			this.pagenav.set( btns );
 		},
 		parsePDF:function( arr ) {
 			var self = this;
