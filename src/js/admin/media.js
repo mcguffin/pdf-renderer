@@ -345,5 +345,5 @@
 			return ret;
 		}
 	});
-
+	_.extend( pdf_renderer, pdfRenderer );
 })( jQuery, pdf_renderer, mOxie );
