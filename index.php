@@ -10,8 +10,8 @@ Author URI: https://github.com/mcguffin
 License: GPL3
 Github Repository: mcguffin/pdf-renderer
 GitHub Plugin URI: mcguffin/pdf-renderer
-Requires WP: 4.8
-Requires PHP: 5.6
+Requires WP: 5.0
+Requires PHP: 7.0
 Text Domain: pdf-renderer
 Domain Path: /languages/
 */
@@ -49,9 +49,6 @@ if ( ! defined('ABSPATH') ) {
 require_once __DIR__ . DIRECTORY_SEPARATOR . 'include/autoload.php';
 
 Core\Core::instance( __FILE__ );
-
-
-
 
 
 

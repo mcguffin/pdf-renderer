@@ -71,7 +71,42 @@ class Admin extends Core\Singleton {
 				'UploadImages'		=> __( 'Upload Images', 'pdf-renderer' ),
 				'Page'				=> __( 'Page', 'pdf-renderer' ),
 			],
+			'options'	=> [
+				'image_width' => apply_filters( 'pdf_renderer_image_width', $this->get_max_image_width() ),
+			],
 		] );
 	}
+
+
+
+
+	/**
+	 *	Get all image sizes
+	 *
+	 *	@return int
+	 */
+	public function get_max_image_width( ) {
+
+		global $_wp_additional_image_sizes;
+		$max_w = 0;
+
+		$intermediate_image_sizes = get_intermediate_image_sizes();
+
+		// Create the full array with sizes and crop info
+		foreach( $intermediate_image_sizes as $_size ) {
+
+			if ( in_array( $_size, [ 'thumbnail', 'medium', 'large' ] ) ) {
+				$w    = intval( get_option( $_size . '_size_w' ) );
+			} elseif ( isset( $_wp_additional_image_sizes[ $_size ] ) ) {
+				$w    = intval( $_wp_additional_image_sizes[ $_size ]['width'] );
+			}
+
+			$max_w = max($w,$max_w);
+		}
+		return $max_w;
+	}
+
+
+
 
 }

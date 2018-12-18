@@ -27,9 +27,9 @@ Installation
 
 TODO:
 -----
- - [ ] Don't load PDFjslib in FF
- - [ ] Use largest image size in settings as upload size
+ - [ ] Use largest image (cropped? uncropped?) size in settings as upload size
  - [ ] UI improvement
- - [ ] Hooks to control
+ - [ ] Hooks to control behaviour
 	 - [ ] Actions offered after file drop (-Upload PDF +Create Gallery)
 	 - [ ] Actions when the last file has been uploaded.
+ - [ ] Don't load PDFjslib in FF

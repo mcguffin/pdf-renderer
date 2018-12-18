@@ -161,14 +161,13 @@
 		},
 		renderPage:function(idx,cb,cb_args) {
 			var self = this;
-			var w = 1920, h=1080; // tmp
 
 			self._pdf.getPage(idx).then(function(page){
 				var vp = page.getViewport(1),
 					canvas = $('<canvas></canvas>').get(0),
 					ctx = canvas.getContext('2d');
 
-				vp = page.getViewport( w / vp.width );
+				vp = page.getViewport( opts.options.image_width / vp.width );
 
 				canvas.width = vp.width;
 				canvas.height = vp.height;
@@ -254,7 +253,7 @@
 					pdfModal = new pdfRenderer.view.PDFFrame( {
 						controller: $(this),
 						uploader:uploader,
-						title:l10n.Upload + ': ' + fileItem.file.name.replace(/\.[a-z0-9]+$/,''),
+						title: l10n.Upload + ': ' + fileItem.file.name.replace(/\.[a-z0-9]+$/,''),
 					} );
 					pdfModal.on('proceed',function() {
 						// next
