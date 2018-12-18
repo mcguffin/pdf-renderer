@@ -34,6 +34,7 @@ Use this to overrule width of generated images. Uses the largest image width kno
 #### Example:
 ```php
 add_filter( 'pdf_renderer_image_width', function( $width ) {
+	// never underestimate a good integer.
 	return 12345;
 });
 ```
