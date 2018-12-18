@@ -65,6 +65,7 @@ class Admin extends Core\Singleton {
 		wp_localize_script('pdf-renderer', 'pdf_renderer', [
 			'l10n'	=> [
 				'pdfInstructions'	=> __( 'Blah blah … and click Proceed to continue','pdf-renderer' ),
+				'Upload'			=> __( 'Upload', 'pdf-renderer' ),
 				'pdfUpload'			=> __( 'PDF Upload', 'pdf-renderer' ),
 				'CancelUpload'		=> __( 'Cancel Upload', 'pdf-renderer' ),
 				'UploadPDF'			=> __( 'Upload as PDF', 'pdf-renderer' ),

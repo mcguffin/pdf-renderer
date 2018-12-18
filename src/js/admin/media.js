@@ -80,6 +80,7 @@
 			});
 
 			this._pages = new Backbone.Collection();
+			this._uploadPages = new Backbone.Collection();
 			this.listenTo(this._pages,'change:selected',function(e){
 				// disable img upload btn if no pages selected
 				this._uploadBtn.$el.prop('disabled', this._pages.where({selected:true}).length === 0 )
@@ -108,14 +109,16 @@
 			this.title.set( [ this._title ] );
 		},
 		createButtons: function() {
-			var self = this,
-				btns = [];
-			btns.push( this._cancelBtn );
+			this.actionBtn = [];
+
+			this.actionBtn.push( this._cancelBtn );
 			if ( pdfAllowed ) {
-				btns.push( this._skipBtn );
+				this.actionBtn.push( this._skipBtn );
 			}
-			btns.push( this._uploadBtn );
-			this.buttons.set( btns );
+			this.actionBtn.push( this._uploadBtn );
+
+			this.buttons.set( this.actionBtn );
+
 		},
 		setFile:function( file ) {
 			var self = this,
@@ -227,7 +230,7 @@
 		uploadImages:function() {
 			var self = this,
 				type = 'image/png',
-				upload = function(name){
+				upload = function( name ) {
 					/*
 					this.canvas.toBlob(function(blob){
 						blob.name = name;
@@ -242,11 +245,15 @@
 					img.onload = function() {
 						img.name = name;
 						img.type = type;
+						img._fromPDF = true;
 						self.options.uploader.addFile( img.getAsBlob(), name );
 
 						self._pages.remove(m.id);
-
-						if ( ! self._pages.length ) {
+						m.set( 'image', img );
+						self._uploadPages.add(m);
+						if ( self._uploadPages.length === self._pages.where( { selected: true } ).length ) {
+							// trigger something
+							self.trigger('complete');
 							self.close();
 						}
 					}
@@ -255,7 +262,9 @@
 					//
 					$('body').append(img);
 				};
-
+			_.each( this.actionBtn, function(btn){
+				btn.$el.prop('disabled',true);
+			} );
 			// create e new media model from blob data URL thingy
 
 			_.each( this._pages.where( { selected: true } ), function( pg, i ){
@@ -305,15 +314,15 @@
 					uploader:uploader,
 					title: l10n.Upload + ': ' + fileItem.file.name.replace(/\.[a-z0-9]+$/,''),
 				} );
-				pdfModal.on('proceed',function() {
-					// next
-					pdfPopup( uploader );
-
-				}).on('cancel-upload',function() {
-					uploader.removeFile( fileItem.file ); // !!
+				pdfModal.on('cancel-upload',function() {
+					// stop ecerything!
+					uploader.removeFile( fileItem.file );
 					fileItem.file.attachment.destroy();
+
 				}).on('continue-upload',function(){
+					// go ahead with a normal WP upload..
 					uploader.start();
+
 				});
 				pdfModal.setFile( fileItem );
 				pdfModal.open();
