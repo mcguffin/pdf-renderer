@@ -52,20 +52,33 @@ function concat_js( src, dest ) {
 // scss admin tasks
 
 // scss
-gulp.task('scss', gulp.parallel(
-	
-	
-));
+gulp.task('scss:admin:media', function(){
+	return do_scss('admin/media');
+});
 
 // admin js
 
 
-gulp.task( 'js:frontend', function(){
+gulp.task( 'js:admin:media', function(){
 	return concat_js( [
-	], 'frontend.js');
+		'./src/js/admin/media.js',
+	], 'admin/media.js');
 } );
 
-gulp.task('js', gulp.parallel( 'js:frontend', ) );
+gulp.task( 'js:pdf', function(){
+	return gulp.src( './node_modules/pdfjs-dist/build/pdf.min.js' )
+		.pipe( gulp.dest( './js/pdf/' ) );
+} );
+gulp.task( 'js:pdfworker', function(){
+	return gulp.src( './node_modules/pdfjs-dist/build/pdf.worker.min.js' )
+		.pipe( gulp.dest( './js/pdf/' ) );
+} );
+gulp.task('pdfjs', gulp.parallel('js:pdf','js:pdfworker') );
+
+
+
+gulp.task('scss', gulp.parallel( 'scss:admin:media', ) );
+gulp.task('js', gulp.parallel( 'js:admin:media', ) );
 
 gulp.task('build', gulp.parallel('scss','js') );
 

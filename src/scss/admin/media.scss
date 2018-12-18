@@ -1,0 +1,93 @@
+@import '../variables/variables';
+
+@import '../mixins/mixins';
+
+.pdf-modal {
+	.media-modal-content {
+		& > * {
+			left:0;
+		}
+		.media-frame-content {
+			top:50px;
+			border-bottom:1px solid #ddd;
+		}
+		// .media-frame-toolbar {
+		// 	bottom:0;
+		// 	height:60px;
+		// }
+	}
+
+	.media-frame-toolbar {
+		left:0;
+		bottom:0;
+		.instructions {
+			margin:18px;
+			font-style:italic;
+			font-size:18px;
+			float:left;
+		}
+	}
+
+	.media-frame-buttons {
+		margin:15px 16px;
+		float:right;
+		button {
+			margin-left:16px;
+		}
+	}
+	.media-frame-content {
+		canvas {
+			display: block;
+			max-width: 100%;
+			max-height: 100%;
+			margin: auto;
+		}
+	}
+	.media-frame-pagenav {
+		position: absolute;
+		bottom: 55px;
+		left:0;
+		right:0;
+	}
+	.button-group {
+		display: flex;
+		& > button {
+			&:first-of-type {
+				margin-left:auto;
+			}
+			&:last-of-type {
+				margin-right:auto;
+			}
+			&.dashicons {
+				border-right-style:none;
+				padding: 0 12px 2px 3px !important;
+				&:before {
+					border:1px solid $wp-gray-dark;
+					content:$dashicon-no;
+				}
+				&.button-primary {
+					&:before {
+						border:1px solid #fff;
+						content:$dashicon-yes;
+					}
+				}
+				& + button {
+					border-left-style:none;
+				}
+			}
+			&.button-primary {
+				// position: relative;
+				// &:after {
+				// 	content:$dashicon-yes;
+				// 	font-family: dashicons;
+				// 	position:absolute;
+				// 	right:1px;
+				// 	top:1px;
+				// 	color:#fff;
+				// 	line-height:1;
+				// 	font-size:16px;
+				// }
+			}
+		}
+	}
+}

@@ -1,11 +1,11 @@
 <?php
 /**
- *	@package PdfRenderer\Core
+ *	@package PDFRenderer\Core
  *	@version 1.0.0
  *	2018-09-22
  */
 
-namespace PdfRenderer\Core;
+namespace PDFRenderer\Core;
 
 if ( ! defined('ABSPATH') ) {
 	die('FU!');

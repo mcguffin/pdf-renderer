@@ -1,11 +1,11 @@
 <?php
 /**
- *	@package PdfRenderer
+ *	@package PDFRenderer
  *	@version 1.0.0
  *	2018-09-22
  */
 
-namespace PdfRenderer;
+namespace PDFRenderer;
 
 if ( ! defined('ABSPATH') ) {
 	die('FU!');
@@ -36,4 +36,4 @@ function __autoload( $class ) {
 }
 
 
-spl_autoload_register( 'PdfRenderer\__autoload' );
+spl_autoload_register( 'PDFRenderer\__autoload' );
