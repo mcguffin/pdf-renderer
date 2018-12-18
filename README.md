@@ -29,7 +29,7 @@ Plugin API
 
 ### Filter `pdf_renderer_image_width`
 
-Use this to overrule width of generated images. Uses the largest image width known to WP by default.
+Use this to overrule width of generated images. Uses the largest image width known to WP by default. (e.g. the Large size from Settings > Media).
 
 #### Example:
 ```php
