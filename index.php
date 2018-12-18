@@ -5,7 +5,7 @@ Plugin Name: PDF Renderer
 Plugin URI: http://wordpress.org/
 Description: Enter description here.
 Author: Jörn Lund
-Version: 0.0.7
+Version: 0.0.8
 Author URI: https://github.com/mcguffin
 License: GPL3
 Github Repository: mcguffin/pdf-renderer
