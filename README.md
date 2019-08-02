@@ -3,6 +3,8 @@ PDF Renderer
 
 Client-Side conversion of PDF Files to images when dropped into the media library.
 
+Includes [Mozilla pdf.js](https://github.com/mozilla/pdf.js/) for browser pdf rendering.
+ 
 ![Upload Dialog](.wporg/screenshot-1.png)
 PDF-Contents: cc-by [Creative Commons](https://creativecommons.org/)
 
@@ -18,7 +20,7 @@ Installation
  - $ `git clone git@github.com:mcguffin/pdf-renderer.git`
  - $ `cd pdf-renderer`
  - $ `npm install`
- - $ `gulp`
+ - $ `npm run dev`
 
 Plugin API
 ----------
