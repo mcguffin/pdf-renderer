@@ -8,7 +8,6 @@ Author: Jörn Lund
 Version: 0.0.8
 Author URI: https://github.com/mcguffin
 License: GPL3
-Github Repository: mcguffin/pdf-renderer
 GitHub Plugin URI: mcguffin/pdf-renderer
 Requires WP: 5.0
 Requires PHP: 7.0

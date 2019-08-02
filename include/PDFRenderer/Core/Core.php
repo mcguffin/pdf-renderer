@@ -80,9 +80,6 @@ class Core extends Plugin {
 	 */
 	private function normalize_asset_path( $asset ) {
 		$pi = pathinfo( $asset );
-		if ( defined('SCRIPT_DEBUG') && SCRIPT_DEBUG && in_array( $pi['extension'], ['css','js']) && pathinfo( $pi['filename'], PATHINFO_EXTENSION ) !== 'min' ) {
-			$asset = sprintf('%s/%s.dev.%s', $pi['dirname'], $pi['filename'], $pi['extension'] );
-		}
 		return $asset;
 	}
 

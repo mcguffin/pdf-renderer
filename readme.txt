@@ -59,6 +59,7 @@ I will migrate all the translation stuff there.
 
 
 == Screenshots ==
+1. Upload Dialog (PDF Contents cc-by by Creative Commons)
 
 == Changelog ==
 

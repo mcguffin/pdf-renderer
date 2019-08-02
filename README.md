@@ -1,17 +1,13 @@
 PDF Renderer
 ============
 
-Client-Side conversion of PDF Files when dropped into the media library.
+Client-Side conversion of PDF Files to images when dropped into the media library.
 
+![Upload Dialog](.wporg/screenshot-1.png)
+PDF-Contents: cc-by [Creative Commons](https://creativecommons.org/)
 
 Installation
 ------------
-
-### Production (Stand-Alone)
- - Head over to [releases](../../releases)
- - Download 'pdf-renderer.zip'
- - Upload and activate it like any other WordPress plugin
- - AutoUpdate will run as long as the plugin is active
 
 ### Production (using Github Updater – recommended for Multisite)
  - Install [Andy Fragen's GitHub Updater](https://github.com/afragen/github-updater) first.
