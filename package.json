@@ -5,6 +5,8 @@
   "private": true,
   "scripts": {
     "dev": "gulp dev",
+    "test": "node ./src/run/test.js",
+    "dev-test": "./src/run/dev-test.sh",
     "dashicons": "node ./src/run/dashicons.js",
     "i18n": "wp i18n make-pot . languages/pdf-renderer.pot --domain=pdf-renderer --exclude=tmp/*",
     "rollback": "git reset --hard HEAD~ && git push origin +master"

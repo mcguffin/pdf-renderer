@@ -3,13 +3,16 @@ PDF Renderer TODO
  - [x] ESNext
  - [x] Reset on close (can't select a second time)
  - [x] Boilerplate 3
- - [ ] Tests
- - [ ] Don't offer PDF upload if PDF uplaod isn't allowed
- - [ ] Block Editor:
-	 - [ ] Image block: 
-	 	- [ ] Drop on block: temporarily allow pdfs
-	 	- [ ] Select from library > Drop PDF: allow only one page! Disallow pdf.
-	 - [ ] Drop on Page: show dialog
+ - [ ] UI
+	 - [ ] Modal
+		 - [ ] Image format (jpg/png)
+		 - [ ] De-/Select all
+	 - [ ] Block Editor:
+		 - [ ] Image block: 
+		 	- [ ] Drop on block: temporarily allow pdfs
+		 	- [ ] Select from library > Drop PDF: allow only one page! Disallow pdf.
+		 - [ ] Drop on Page: show dialog
+ - [ ] Test-Mode
  - [ ] Proper filenames or attachment titles
  - [ ] Refactor pdf-frame.js
  - [ ] Select image format on upload - deprecate `pdf_renderer_image_type`
