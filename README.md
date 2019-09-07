@@ -1,7 +1,7 @@
 PDF Renderer
 ============
 
-Client-Side conversion of PDF Files to images when dropped into the media library.
+Convert PDF Files to Images in your browser when dropped into the media library.
 
 Includes [Mozilla pdf.js](https://github.com/mozilla/pdf.js/) for browser pdf rendering.
  

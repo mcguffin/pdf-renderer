@@ -1,12 +1,24 @@
 PDF Renderer TODO
 =================
  - [x] ESNext
- - [x] Reset on close (cant select a second time)
- - [ ] Block Editor Support
+ - [x] Reset on close (can't select a second time)
+ - [x] Boilerplate 3
+ - [ ] Tests
+ - [ ] Don't offer PDF upload if PDF uplaod isn't allowed
+ - [ ] Block Editor:
 	 - [ ] Image block: 
 	 	- [ ] Drop on block: temporarily allow pdfs
 	 	- [ ] Select from library > Drop PDF: allow only one page! Disallow pdf.
 	 - [ ] Drop on Page: show dialog
  - [ ] Proper filenames or attachment titles
  - [ ] Refactor pdf-frame.js
- - [ ] close Popup before upload or indicate progress somehow...
+ - [ ] Select image format on upload - deprecate `pdf_renderer_image_type`
+ - [ ] Close Popup before upload .. indicate progress somehow ...
+ - [ ] composer.json
+ - [ ] Testing
+	 - [ ] Media Library page
+	 - [ ] Post editor
+	 - [ ] With ACF Image + Gallery field
+ - [ ] Design wporg assets
+ - [ ] wporg readme
+ - [ ] submit to wporg

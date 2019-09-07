@@ -11,11 +11,7 @@ if ( ! defined('ABSPATH') ) {
 	die('FU!');
 }
 
-
-use PDFRenderer\PostType;
-use PDFRenderer\Compat;
-
-class Plugin extends PluginComponent {
+class Plugin extends Singleton implements ComponentInterface {
 
 	/** @var string plugin main file */
 	private $plugin_file;
@@ -39,19 +35,10 @@ class Plugin extends PluginComponent {
 		register_uninstall_hook( $this->get_plugin_file(), array( __CLASS__, 'uninstall' ) );
 
 		add_action( 'admin_init', array( $this, 'maybe_upgrade' ) );
-		add_filter( 'extra_plugin_headers', array( $this, 'add_plugin_header' ) );
 
 		add_action( 'plugins_loaded' , array( $this , 'load_textdomain' ) );
 
 		parent::__construct();
-	}
-
-	/**
-	 *	@filter extra_plugin_headers
-	 */
-	public function add_plugin_header( $headers ) {
-		$headers['GithubRepo'] = 'Github Repository';
-		return $headers;
 	}
 
 	/**
@@ -67,6 +54,25 @@ class Plugin extends PluginComponent {
 	public function get_plugin_dir() {
 		return plugin_dir_path( $this->get_plugin_file() );
 	}
+
+	/**
+	 *	@return string full plugin url path
+	 */
+	public function get_plugin_url() {
+		return plugin_dir_url( $this->get_plugin_file() );
+	}
+
+
+
+	/**
+	 *	@inheritdoc
+	 */
+	public function get_asset_roots() {
+		return [
+			$this->get_plugin_dir() => $this->get_plugin_url(),
+		];
+	}
+
 
 	/**
 	 *	@return string plugin slug
@@ -85,7 +91,7 @@ class Plugin extends PluginComponent {
 	/**
 	 *	@return string current plugin version
 	 */
-	public function get_version() {
+	public function version() {
 		return $this->get_plugin_meta( 'Version' );
 	}
 
@@ -103,12 +109,13 @@ class Plugin extends PluginComponent {
 		return $this->plugin_meta;
 	}
 
+
 	/**
 	 *	@action plugins_loaded
 	 */
 	public function maybe_upgrade() {
 		// trigger upgrade
-		$new_version = $this->get_version();
+		$new_version = $this->version();
 		$old_version = get_site_option( 'pdf_renderer_version' );
 
 		// call upgrade

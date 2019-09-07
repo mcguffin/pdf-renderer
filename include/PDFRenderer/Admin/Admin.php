@@ -11,12 +11,12 @@ if ( ! defined('ABSPATH') ) {
 	die('FU!');
 }
 
+use PDFRenderer\Asset;
 use PDFRenderer\Core;
 
 
 class Admin extends Core\Singleton {
 
-	private $core;
 
 	/**
 	 *	@inheritdoc
@@ -25,12 +25,9 @@ class Admin extends Core\Singleton {
 
 		$this->core = Core\Core::instance();
 
-//		add_action( 'admin_init', [ $this, 'admin_init' ] );
-
 		add_action( 'print_media_templates', [ $this, 'print_media_templates' ] );
 
 		add_action( 'wp_enqueue_media', [ $this, 'enqueue_assets' ] );
-
 	}
 
 
@@ -46,43 +43,38 @@ class Admin extends Core\Singleton {
 	}
 
 	/**
-	 *	Admin init
-	 *	@action admin_init
-	 */
-	public function admin_init() {
-	}
-
-	/**
 	 *	Enqueue options Assets
 	 *	@action admin_print_scripts
 	 */
 	public function enqueue_assets() {
 
-		wp_enqueue_style( 'pdf-renderer-admin', $this->core->get_asset_url( '/css/admin/media.css' ) );
+		Asset\Asset::get('css/admin/media.css')
+			->enqueue();
 
-		wp_register_script( 'pdfjs', $this->core->get_asset_url( 'js/pdf/pdf.min.js' ) );
-		wp_register_script( 'pdf-renderer', $this->core->get_asset_url( 'js/admin/media.js' ), [ 'jquery', 'media-grid', 'pdfjs' ] );
-		wp_localize_script('pdf-renderer', 'pdf_renderer', [
-			'l10n'	=> [
-				'pdfInstructions'	=> __( 'Blah blah … and click Proceed to continue','pdf-renderer' ),
-				'Upload'			=> __( 'Upload', 'pdf-renderer' ),
-				'pdfUpload'			=> __( 'PDF Upload', 'pdf-renderer' ),
-				'CancelUpload'		=> __( 'Cancel Upload', 'pdf-renderer' ),
-				'UploadPDF'			=> __( 'Upload as PDF', 'pdf-renderer' ),
-				'UploadImages'		=> __( 'Upload Images', 'pdf-renderer' ),
-				'Page'				=> __( 'Page', 'pdf-renderer' ),
-			],
-			'options'	=> [
-				'image_width'	=> apply_filters( 'pdf_renderer_image_width', $this->get_max_image_width() ),
-				'image_type'	=> apply_filters( 'pdf_renderer_image_type', 'image/png' ),
-				'jpeg_quality'	=> apply_filters( 'jpeg_quality', 82, 'pdf_renderer' ),
-			],
-		] );
-		wp_enqueue_script('pdf-renderer');
+		Asset\Asset::get('js/admin/media.js')
+			->deps( array(
+				'jquery',
+				'media-grid',
+				Asset\Asset::get('js/pdf/pdf.min.js')->register()->handle
+			) )
+			->localize( array(
+				'l10n'	=> [
+					'pdfInstructions'	=> __( 'Blah blah … and click Proceed to continue','pdf-renderer' ),
+					'Upload'			=> __( 'Upload', 'pdf-renderer' ),
+					'pdfUpload'			=> __( 'PDF Upload', 'pdf-renderer' ),
+					'CancelUpload'		=> __( 'Cancel Upload', 'pdf-renderer' ),
+					'UploadPDF'			=> __( 'Upload as PDF', 'pdf-renderer' ),
+					'UploadImages'		=> __( 'Upload Images', 'pdf-renderer' ),
+					'Page'				=> __( 'Page', 'pdf-renderer' ),
+				],
+				'options'	=> [
+					'image_width'	=> apply_filters( 'pdf_renderer_image_width', $this->get_max_image_width() ),
+					'image_type'	=> apply_filters( 'pdf_renderer_image_type', 'image/png' ),
+					'jpeg_quality'	=> apply_filters( 'jpeg_quality', 82, 'pdf_renderer' ),
+				],
+			), 'pdf_renderer' )
+			->enqueue();
 	}
-
-
-
 
 	/**
 	 *	Get all image sizes
@@ -111,8 +103,6 @@ class Admin extends Core\Singleton {
 		}
 		return $max_w;
 	}
-
-
 
 
 }
