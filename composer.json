@@ -2,6 +2,7 @@
     "name": "mcguffin/pdf-renderer",
     "description": "Convert PDF-Files to Images in your browser",
     "type": "wordpress-plugin",
+    "license": "GPL-3.0-or-later",
     "authors": [
         {
             "name": "Jörn Lund",
