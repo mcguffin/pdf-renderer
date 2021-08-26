@@ -1,14 +1,36 @@
 {
     "name": "mcguffin/pdf-renderer",
-    "description": "Convert PDF-Files to Images in your browser",
+    "description": "WordPress plugin to convert pdf uploads to image files",
     "type": "wordpress-plugin",
     "license": "GPL-3.0-or-later",
-    "authors": [
-        {
-            "name": "Jörn Lund",
-            "homepage": "https://github.com/mcguffin"
-        }
-    ],
     "minimum-stability": "dev",
-    "require": {}
+    "require": {
+        "intervention/httpauth": "^3.0",
+		"mcguffin/wp-skeleton-asset": "dev-main",
+		"mcguffin/wp-skeleton-plugin": "dev-main"
+    },
+	"require-dev": {
+		"squizlabs/php_codesniffer": "*",
+		"wp-coding-standards/wpcs": "*",
+		"phpcompatibility/php-compatibility": "*",
+		"pheromone/phpcs-security-audit":"*"
+	},
+	"repositories": [
+		{
+			"type": "vcs",
+			"url":"git@github.com:mcguffin/wp-skeleton-asset.git"
+		},
+		{
+			"type": "vcs",
+			"url":"git@github.com:mcguffin/wp-skeleton-core.git"
+		},
+		{
+			"type": "vcs",
+			"url":"git@github.com:mcguffin/wp-skeleton-plugin.git"
+		},
+		{
+			"type": "vcs",
+			"url":"git@github.com:mcguffin/wp-skeleton-theme.git"
+		}
+	]
 }

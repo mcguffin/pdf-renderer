@@ -1,0 +1,617 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "3bbacd78421512768678a836475450f2",
+    "packages": [
+        {
+            "name": "intervention/httpauth",
+            "version": "3.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Intervention/httpauth.git",
+                "reference": "7742aa013e1a72f94379cb6623286f06fa1ea5f7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Intervention/httpauth/zipball/7742aa013e1a72f94379cb6623286f06fa1ea5f7",
+                "reference": "7742aa013e1a72f94379cb6623286f06fa1ea5f7",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.3|^8.0"
+            },
+            "require-dev": {
+                "phpstan/phpstan": "^0.12.11",
+                "phpunit/phpunit": "^9.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Intervention\\HttpAuth\\Laravel\\HttpAuthServiceProvider"
+                    ],
+                    "aliases": {
+                        "HttpAuth": "Intervention\\HttpAuth\\Laravel\\Facades\\HttpAuth"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Intervention\\HttpAuth\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Oliver Vogel",
+                    "email": "oliver@olivervogel.com",
+                    "homepage": "https://olivervogel.com/"
+                }
+            ],
+            "description": "HTTP authentication (Basic & Digest) including ServiceProviders for easy Laravel integration",
+            "homepage": "https://github.com/Intervention/httpauth",
+            "keywords": [
+                "Authentication",
+                "http",
+                "laravel"
+            ],
+            "support": {
+                "issues": "https://github.com/Intervention/httpauth/issues",
+                "source": "https://github.com/Intervention/httpauth/tree/3.0.3"
+            },
+            "time": "2021-01-22T15:08:35+00:00"
+        },
+        {
+            "name": "mcguffin/wp-skeleton-asset",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mcguffin/wp-skeleton-asset.git",
+                "reference": "05dd2b7ac7abca568916ed7a23fefdfea88441df"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mcguffin/wp-skeleton-asset/zipball/05dd2b7ac7abca568916ed7a23fefdfea88441df",
+                "reference": "05dd2b7ac7abca568916ed7a23fefdfea88441df",
+                "shasum": ""
+            },
+            "require": {
+                "mcguffin/wp-skeleton-core": "dev-main"
+            },
+            "default-branch": true,
+            "type": "wordpress-library",
+            "autoload": {
+                "psr-4": {
+                    "McGuffin\\Asset\\": "src/"
+                }
+            },
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "description": "WP Plugin Component implementing Script and Style asset handling",
+            "support": {
+                "source": "https://github.com/mcguffin/wp-skeleton-asset/tree/main",
+                "issues": "https://github.com/mcguffin/wp-skeleton-asset/issues"
+            },
+            "time": "2021-08-26T12:08:54+00:00"
+        },
+        {
+            "name": "mcguffin/wp-skeleton-core",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mcguffin/wp-skeleton-core.git",
+                "reference": "9792c1d724c5fb71518dcc042ffde88ef4ecde02"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mcguffin/wp-skeleton-core/zipball/9792c1d724c5fb71518dcc042ffde88ef4ecde02",
+                "reference": "9792c1d724c5fb71518dcc042ffde88ef4ecde02",
+                "shasum": ""
+            },
+            "default-branch": true,
+            "type": "wordpress-library",
+            "autoload": {
+                "psr-4": {
+                    "McGuffin\\Core\\": "src/"
+                }
+            },
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "description": "WP Plugin Component Core",
+            "support": {
+                "source": "https://github.com/mcguffin/wp-skeleton-core/tree/main",
+                "issues": "https://github.com/mcguffin/wp-skeleton-core/issues"
+            },
+            "time": "2021-08-26T12:09:59+00:00"
+        },
+        {
+            "name": "mcguffin/wp-skeleton-plugin",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mcguffin/wp-skeleton-plugin.git",
+                "reference": "4d7d25eb5c2b6ba68add62bb4c18786aeb187d19"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mcguffin/wp-skeleton-plugin/zipball/4d7d25eb5c2b6ba68add62bb4c18786aeb187d19",
+                "reference": "4d7d25eb5c2b6ba68add62bb4c18786aeb187d19",
+                "shasum": ""
+            },
+            "require": {
+                "mcguffin/wp-skeleton-core": "dev-main"
+            },
+            "default-branch": true,
+            "type": "wordpress-library",
+            "autoload": {
+                "psr-4": {
+                    "McGuffin\\Plugin\\": "src/"
+                }
+            },
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "description": "WP Plugin Component Plugin Core",
+            "support": {
+                "source": "https://github.com/mcguffin/wp-skeleton-plugin/tree/main",
+                "issues": "https://github.com/mcguffin/wp-skeleton-plugin/issues"
+            },
+            "time": "2021-08-26T12:11:13+00:00"
+        }
+    ],
+    "packages-dev": [
+        {
+            "name": "dealerdirect/phpcodesniffer-composer-installer",
+            "version": "v0.7.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Dealerdirect/phpcodesniffer-composer-installer.git",
+                "reference": "fe390591e0241955f22eb9ba327d137e501c771c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Dealerdirect/phpcodesniffer-composer-installer/zipball/fe390591e0241955f22eb9ba327d137e501c771c",
+                "reference": "fe390591e0241955f22eb9ba327d137e501c771c",
+                "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "^1.0 || ^2.0",
+                "php": ">=5.3",
+                "squizlabs/php_codesniffer": "^2.0 || ^3.0 || ^4.0"
+            },
+            "require-dev": {
+                "composer/composer": "*",
+                "phpcompatibility/php-compatibility": "^9.0",
+                "sensiolabs/security-checker": "^4.1.0"
+            },
+            "type": "composer-plugin",
+            "extra": {
+                "class": "Dealerdirect\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\Plugin"
+            },
+            "autoload": {
+                "psr-4": {
+                    "Dealerdirect\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Franck Nijhof",
+                    "email": "franck.nijhof@dealerdirect.com",
+                    "homepage": "http://www.frenck.nl",
+                    "role": "Developer / IT Manager"
+                }
+            ],
+            "description": "PHP_CodeSniffer Standards Composer Installer Plugin",
+            "homepage": "http://www.dealerdirect.com",
+            "keywords": [
+                "PHPCodeSniffer",
+                "PHP_CodeSniffer",
+                "code quality",
+                "codesniffer",
+                "composer",
+                "installer",
+                "phpcs",
+                "plugin",
+                "qa",
+                "quality",
+                "standard",
+                "standards",
+                "style guide",
+                "stylecheck",
+                "tests"
+            ],
+            "support": {
+                "issues": "https://github.com/dealerdirect/phpcodesniffer-composer-installer/issues",
+                "source": "https://github.com/dealerdirect/phpcodesniffer-composer-installer"
+            },
+            "time": "2020-12-07T18:04:37+00:00"
+        },
+        {
+            "name": "pheromone/phpcs-security-audit",
+            "version": "2.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/FloeDesignTechnologies/phpcs-security-audit.git",
+                "reference": "68a6c53a57156a5efb2073b1eb3f2d79a46c9dc2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/FloeDesignTechnologies/phpcs-security-audit/zipball/68a6c53a57156a5efb2073b1eb3f2d79a46c9dc2",
+                "reference": "68a6c53a57156a5efb2073b1eb3f2d79a46c9dc2",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4",
+                "squizlabs/php_codesniffer": ">3.0"
+            },
+            "type": "phpcodesniffer-standard",
+            "autoload": {
+                "psr-4": {
+                    "PHPCS_SecurityAudit\\": "Security/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Jonathan Marcil",
+                    "homepage": "https://twitter.com/jonathanmarcil"
+                }
+            ],
+            "description": "phpcs-security-audit is a set of PHP_CodeSniffer rules that finds vulnerabilities and weaknesses related to security in PHP code",
+            "support": {
+                "issues": "https://github.com/FloeDesignTechnologies/phpcs-security-audit/issues",
+                "source": "https://github.com/FloeDesignTechnologies/phpcs-security-audit/tree/master"
+            },
+            "time": "2019-08-05T19:34:55+00:00"
+        },
+        {
+            "name": "phpcompatibility/php-compatibility",
+            "version": "dev-develop",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/PHPCompatibility/PHPCompatibility.git",
+                "reference": "335cd6bfd678dcc32742641f9e34596b303a4f8a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/PHPCompatibility/PHPCompatibility/zipball/335cd6bfd678dcc32742641f9e34596b303a4f8a",
+                "reference": "335cd6bfd678dcc32742641f9e34596b303a4f8a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4",
+                "phpcsstandards/phpcsutils": "^1.0",
+                "squizlabs/php_codesniffer": "^2.6 || ^3.1.0"
+            },
+            "conflict": {
+                "squizlabs/php_codesniffer": "2.6.2"
+            },
+            "replace": {
+                "wimg/php-compatibility": "*"
+            },
+            "require-dev": {
+                "php-parallel-lint/php-console-highlighter": "^0.5",
+                "php-parallel-lint/php-parallel-lint": "^1.2.0",
+                "phpcsstandards/phpcsdevtools": "^1.0",
+                "phpunit/phpunit": "^4.8 || ^5.0 || ^6.0 || ^7.0 || ^8.0 || >=9.0 <9.3.0"
+            },
+            "suggest": {
+                "roave/security-advisories": "dev-master || Helps prevent installing dependencies with known security issues."
+            },
+            "default-branch": true,
+            "type": "phpcodesniffer-standard",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "9.x-dev",
+                    "dev-develop": "10.x-dev"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Wim Godden",
+                    "homepage": "https://github.com/wimg",
+                    "role": "lead"
+                },
+                {
+                    "name": "Juliette Reinders Folmer",
+                    "homepage": "https://github.com/jrfnl",
+                    "role": "lead"
+                },
+                {
+                    "name": "Contributors",
+                    "homepage": "https://github.com/PHPCompatibility/PHPCompatibility/graphs/contributors"
+                }
+            ],
+            "description": "A set of sniffs for PHP_CodeSniffer that checks for PHP cross-version compatibility.",
+            "homepage": "http://techblog.wimgodden.be/tag/codesniffer/",
+            "keywords": [
+                "compatibility",
+                "phpcs",
+                "standards"
+            ],
+            "support": {
+                "issues": "https://github.com/PHPCompatibility/PHPCompatibility/issues",
+                "source": "https://github.com/PHPCompatibility/PHPCompatibility"
+            },
+            "time": "2021-06-21T21:03:49+00:00"
+        },
+        {
+            "name": "phpcsstandards/phpcsextra",
+            "version": "dev-develop",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/PHPCSStandards/PHPCSExtra.git",
+                "reference": "b664bc2b31049186eb56ea123f25741c581a8f81"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/PHPCSStandards/PHPCSExtra/zipball/b664bc2b31049186eb56ea123f25741c581a8f81",
+                "reference": "b664bc2b31049186eb56ea123f25741c581a8f81",
+                "shasum": ""
+            },
+            "require": {
+                "dealerdirect/phpcodesniffer-composer-installer": "^0.4.1 || ^0.5 || ^0.6.2 || ^0.7",
+                "php": ">=5.4",
+                "phpcsstandards/phpcsutils": "^1.0 || dev-develop",
+                "squizlabs/php_codesniffer": "^3.3.1"
+            },
+            "require-dev": {
+                "php-parallel-lint/php-console-highlighter": "^0.5",
+                "php-parallel-lint/php-parallel-lint": "^1.0",
+                "phpcsstandards/phpcsdevtools": "^1.0",
+                "phpunit/phpunit": "^4.5 || ^5.0 || ^6.0 || ^7.0"
+            },
+            "default-branch": true,
+            "type": "phpcodesniffer-standard",
+            "extra": {
+                "branch-alias": {
+                    "dev-stable": "1.x-dev",
+                    "dev-develop": "1.x-dev"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Juliette Reinders Folmer",
+                    "homepage": "https://github.com/jrfnl",
+                    "role": "lead"
+                },
+                {
+                    "name": "Contributors",
+                    "homepage": "https://github.com/PHPCSStandards/PHPCSExtra/graphs/contributors"
+                }
+            ],
+            "description": "A collection of sniffs and standards for use with PHP_CodeSniffer.",
+            "keywords": [
+                "PHP_CodeSniffer",
+                "phpcbf",
+                "phpcodesniffer-standard",
+                "phpcs",
+                "standards"
+            ],
+            "support": {
+                "issues": "https://github.com/PHPCSStandards/PHPCSExtra/issues",
+                "source": "https://github.com/PHPCSStandards/PHPCSExtra"
+            },
+            "time": "2021-06-22T00:42:26+00:00"
+        },
+        {
+            "name": "phpcsstandards/phpcsutils",
+            "version": "dev-develop",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/PHPCSStandards/PHPCSUtils.git",
+                "reference": "64da18cf34eab19c6673a2aa0afbdd8d38aaf18c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/PHPCSStandards/PHPCSUtils/zipball/64da18cf34eab19c6673a2aa0afbdd8d38aaf18c",
+                "reference": "64da18cf34eab19c6673a2aa0afbdd8d38aaf18c",
+                "shasum": ""
+            },
+            "require": {
+                "dealerdirect/phpcodesniffer-composer-installer": "^0.4.1 || ^0.5 || ^0.6.2 || ^0.7",
+                "php": ">=5.4",
+                "squizlabs/php_codesniffer": "^2.6.0 || ^3.1.0 || 4.0.x-dev@dev"
+            },
+            "conflict": {
+                "squizlabs/php_codesniffer": "3.5.3"
+            },
+            "require-dev": {
+                "php-parallel-lint/php-console-highlighter": "^0.5",
+                "php-parallel-lint/php-parallel-lint": "^1.3.0",
+                "phpunit/phpunit": "^4.8.36 || ^5.7.21 || ^6.0 || ^7.0 || ^8.0 || >=9.0 <9.3.0",
+                "yoast/phpunit-polyfills": "^1.0.0"
+            },
+            "default-branch": true,
+            "type": "phpcodesniffer-standard",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.x-dev",
+                    "dev-develop": "1.x-dev"
+                }
+            },
+            "autoload": {
+                "classmap": [
+                    "PHPCSUtils/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Juliette Reinders Folmer",
+                    "homepage": "https://github.com/jrfnl",
+                    "role": "lead"
+                },
+                {
+                    "name": "Contributors",
+                    "homepage": "https://github.com/PHPCSStandards/PHPCSUtils/graphs/contributors"
+                }
+            ],
+            "description": "A suite of utility functions for use with PHP_CodeSniffer",
+            "homepage": "https://phpcsutils.com/",
+            "keywords": [
+                "PHP_CodeSniffer",
+                "phpcbf",
+                "phpcodesniffer-standard",
+                "phpcs",
+                "phpcs2",
+                "phpcs3",
+                "standards",
+                "tokens",
+                "utility"
+            ],
+            "support": {
+                "docs": "https://phpcsutils.com/",
+                "issues": "https://github.com/PHPCSStandards/PHPCSUtils/issues",
+                "source": "https://github.com/PHPCSStandards/PHPCSUtils"
+            },
+            "time": "2021-06-22T01:15:25+00:00"
+        },
+        {
+            "name": "squizlabs/php_codesniffer",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
+                "reference": "5be0b006204f0c33829ffc2f9582970d1302db21"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/5be0b006204f0c33829ffc2f9582970d1302db21",
+                "reference": "5be0b006204f0c33829ffc2f9582970d1302db21",
+                "shasum": ""
+            },
+            "require": {
+                "ext-simplexml": "*",
+                "ext-tokenizer": "*",
+                "ext-xmlwriter": "*",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.0 || ^5.0 || ^6.0 || ^7.0"
+            },
+            "default-branch": true,
+            "bin": [
+                "bin/phpcs",
+                "bin/phpcbf"
+            ],
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.x-dev"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Greg Sherwood",
+                    "role": "lead"
+                }
+            ],
+            "description": "PHP_CodeSniffer tokenizes PHP, JavaScript and CSS files and detects violations of a defined set of coding standards.",
+            "homepage": "https://github.com/squizlabs/PHP_CodeSniffer",
+            "keywords": [
+                "phpcs",
+                "standards"
+            ],
+            "support": {
+                "issues": "https://github.com/squizlabs/PHP_CodeSniffer/issues",
+                "source": "https://github.com/squizlabs/PHP_CodeSniffer",
+                "wiki": "https://github.com/squizlabs/PHP_CodeSniffer/wiki"
+            },
+            "time": "2021-08-12T22:17:49+00:00"
+        },
+        {
+            "name": "wp-coding-standards/wpcs",
+            "version": "dev-develop",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/WordPress/WordPress-Coding-Standards.git",
+                "reference": "dc2f21771cb2b5336a7e6bb6616abcdfa691d7de"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/WordPress/WordPress-Coding-Standards/zipball/dc2f21771cb2b5336a7e6bb6616abcdfa691d7de",
+                "reference": "dc2f21771cb2b5336a7e6bb6616abcdfa691d7de",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4",
+                "phpcsstandards/phpcsextra": "^1.0",
+                "phpcsstandards/phpcsutils": "^1.0",
+                "squizlabs/php_codesniffer": "^3.5.0"
+            },
+            "require-dev": {
+                "php-parallel-lint/php-console-highlighter": "^0.5",
+                "php-parallel-lint/php-parallel-lint": "^1.0",
+                "phpcompatibility/php-compatibility": "^9.0",
+                "phpcsstandards/phpcsdevtools": "^1.0",
+                "phpunit/phpunit": "^4.0 || ^5.0 || ^6.0 || ^7.0"
+            },
+            "default-branch": true,
+            "type": "phpcodesniffer-standard",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Contributors",
+                    "homepage": "https://github.com/WordPress/WordPress-Coding-Standards/graphs/contributors"
+                }
+            ],
+            "description": "PHP_CodeSniffer rules (sniffs) to enforce WordPress coding conventions",
+            "keywords": [
+                "phpcs",
+                "standards",
+                "wordpress"
+            ],
+            "support": {
+                "issues": "https://github.com/WordPress/WordPress-Coding-Standards/issues",
+                "source": "https://github.com/WordPress/WordPress-Coding-Standards",
+                "wiki": "https://github.com/WordPress/WordPress-Coding-Standards/wiki"
+            },
+            "time": "2021-07-29T11:23:51+00:00"
+        }
+    ],
+    "aliases": [],
+    "minimum-stability": "dev",
+    "stability-flags": {
+        "mcguffin/wp-skeleton-asset": 20,
+        "mcguffin/wp-skeleton-plugin": 20
+    },
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": [],
+    "plugin-api-version": "2.1.0"
+}
