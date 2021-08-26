@@ -5,7 +5,7 @@
         'type' => 'wordpress-plugin',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '4d42cc3cf7859b10d020cf81d890f563eccd8891',
+        'reference' => '2d9ae45fce7ea9d6274052f4964b9639cf29f3a8',
         'name' => 'mcguffin/pdf-renderer',
         'dev' => false,
     ),
@@ -25,7 +25,7 @@
             'type' => 'wordpress-plugin',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '4d42cc3cf7859b10d020cf81d890f563eccd8891',
+            'reference' => '2d9ae45fce7ea9d6274052f4964b9639cf29f3a8',
             'dev_requirement' => false,
         ),
         'mcguffin/wp-skeleton-asset' => array(
