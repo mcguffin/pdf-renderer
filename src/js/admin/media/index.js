@@ -12,13 +12,14 @@ if ( ! pdfAllowed ) {
 	_wpPluploadSettings.defaults.filters.mime_types[0].extensions += ',pdf';
 }
 
+
 // extend WP Uploader window
 _.extend( wp.media.view.UploaderWindow.prototype, {
 	_parentReady: wp.media.view.UploaderWindow.prototype.ready,
 	didReady:false,
 
 	ready:function() {
-		const pdfs = [], 
+		const pdfs = [],
 			self = this;
 		let pdfModal, ret;
 
@@ -47,9 +48,9 @@ _.extend( wp.media.view.UploaderWindow.prototype, {
 				}).on('continue-upload',() => {
 					// go ahead with a normal WP upload..
 					uploader.start();
-				});				
+				});
 			}
-			
+
 			pdfModal.setFile( fileItem );
 			pdfModal.open();
 		}

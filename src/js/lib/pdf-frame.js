@@ -3,6 +3,8 @@ import o from 'moxie';
 import PageItem from 'page-item.js';
 import { pdfAllowed, l10n, options } from 'misc.js';
 
+pdfjsLib.GlobalWorkerOptions.workerSrc = options.worker_url;
+
 module.exports = wp.media.view.MediaFrame.extend({
 	template: wp.template('pdf-modal'),
 	regions: [ 'title','content','instructions','buttons', 'pagenav' ],
@@ -13,6 +15,7 @@ module.exports = wp.media.view.MediaFrame.extend({
 			this.reset().close();
 		}
 	},
+	_state: 'pdf-frame',
 	initialize: function() {
 
 		const self = this;
@@ -71,6 +74,7 @@ module.exports = wp.media.view.MediaFrame.extend({
 		return this;
 
 	},
+
 	reset: function() {
 		this.actionBtn.forEach( btn => btn.$el.prop( 'disabled', false ) )
 		this.title.set([]);
@@ -159,15 +163,15 @@ module.exports = wp.media.view.MediaFrame.extend({
 	},
 	parsePDF: function( arr ) {
 		const self = this;
-		(async arr => {
-			const pdf = await pdfjsLib.getDocument(arr);
-			// build pages selector
-			self._pdf = pdf;
-			self.renderPageNav(pdf.numPages)
+		pdfjsLib.getDocument(arr).promise.then(
+			pdf => {
+				self._pdf = pdf;
+				self.renderPageNav(pdf.numPages)
 
-			self.showPage(1);
-
-		})(arr)
+				self.showPage(1);
+			},
+			console.error
+		)
 	},
 	showPage:function(idx) {
 		const self = this,
