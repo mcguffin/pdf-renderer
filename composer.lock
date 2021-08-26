@@ -73,12 +73,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/mcguffin/wp-skeleton-asset.git",
-                "reference": "05dd2b7ac7abca568916ed7a23fefdfea88441df"
+                "reference": "1c656cc2459e31ec2a2d90d15ec49187956337f0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mcguffin/wp-skeleton-asset/zipball/05dd2b7ac7abca568916ed7a23fefdfea88441df",
-                "reference": "05dd2b7ac7abca568916ed7a23fefdfea88441df",
+                "url": "https://api.github.com/repos/mcguffin/wp-skeleton-asset/zipball/1c656cc2459e31ec2a2d90d15ec49187956337f0",
+                "reference": "1c656cc2459e31ec2a2d90d15ec49187956337f0",
                 "shasum": ""
             },
             "require": {
@@ -99,7 +99,7 @@
                 "source": "https://github.com/mcguffin/wp-skeleton-asset/tree/main",
                 "issues": "https://github.com/mcguffin/wp-skeleton-asset/issues"
             },
-            "time": "2021-08-26T12:08:54+00:00"
+            "time": "2021-08-26T15:01:02+00:00"
         },
         {
             "name": "mcguffin/wp-skeleton-core",
@@ -138,12 +138,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/mcguffin/wp-skeleton-plugin.git",
-                "reference": "4d7d25eb5c2b6ba68add62bb4c18786aeb187d19"
+                "reference": "799fcb689bdc126894236a5d9e9dadd831889630"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mcguffin/wp-skeleton-plugin/zipball/4d7d25eb5c2b6ba68add62bb4c18786aeb187d19",
-                "reference": "4d7d25eb5c2b6ba68add62bb4c18786aeb187d19",
+                "url": "https://api.github.com/repos/mcguffin/wp-skeleton-plugin/zipball/799fcb689bdc126894236a5d9e9dadd831889630",
+                "reference": "799fcb689bdc126894236a5d9e9dadd831889630",
                 "shasum": ""
             },
             "require": {
@@ -164,7 +164,7 @@
                 "source": "https://github.com/mcguffin/wp-skeleton-plugin/tree/main",
                 "issues": "https://github.com/mcguffin/wp-skeleton-plugin/issues"
             },
-            "time": "2021-08-26T12:11:13+00:00"
+            "time": "2021-08-26T15:08:48+00:00"
         }
     ],
     "packages-dev": [
