@@ -1,0 +1,2 @@
+WP Skeleton Plugin Core
+=======================

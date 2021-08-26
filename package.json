@@ -10,6 +10,7 @@
     "dashicons": "node ./src/run/dashicons.js",
     "i18n": "wp i18n make-pot . languages/pdf-renderer.pot --domain=pdf-renderer --exclude=tmp/*",
     "ver": "echo \"<?php return $(jq .version < ./package.json);\" > include/version.php",
+    "postinstall": "composer install",
     "audit": "./vendor/squizlabs/php_codesniffer/bin/phpcs . --report=code --standard=./phpcs-security.ruleset.xml -n -s > ./phpcs-report.txt || exit 0",
     "rollback": "git reset --hard HEAD~ && git push origin +master"
   },
@@ -52,10 +53,7 @@
     "vinyl-buffer": "^1.0.1",
     "vinyl-source-stream": "^2.0.0"
   },
-  "engines": {
-    "node": "12.4.0",
-    "npm": "^6.9.0"
-  },
+  "engines": {},
   "wpPlugin": {
     "components": {
       "core": {
@@ -88,19 +86,20 @@
     ],
     "type": "plugin",
     "build": {
+      "versionedFiles": null,
       "prebuild": [
         "npm upgrade pdfjs",
         "wp i18n make-pot . languages/pdf-renderer.pot --domain=pdf-renderer --exclude=tmp",
         "composer install --no-dev",
-        "sed -i '' 's/vendor\//#vendor\//g' .gitignore"
+        "sed -i '' 's/vendor\\//#vendor\\//g' .gitignore"
       ],
       "build": [
         "gulp build",
-        "npm run setversion"
+        "npm run ver"
       ]
     },
     "post": [
-      "sed -i '' 's/#vendor\//vendor\//g' .gitignore",
+      "sed -i '' 's/#vendor\\//vendor\\//g' .gitignore",
       "git add .",
       "git commit -m 'post release'",
       "git push"

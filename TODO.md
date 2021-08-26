@@ -12,12 +12,9 @@ PDF Renderer TODO
 		 	- [ ] Drop on block: temporarily allow pdfs
 		 	- [ ] Select from library > Drop PDF: allow only one page! Disallow pdf.
 		 - [ ] Drop on Page: show dialog
- - [ ] Test-Mode
  - [ ] Proper filenames or attachment titles
  - [ ] Refactor pdf-frame.js
- - [ ] Select image format on upload - deprecate `pdf_renderer_image_type`
- - [ ] Close Popup before upload .. indicate progress somehow ...
- - [ ] composer.json
+ - [ ] Bug: black images after popup is closed
  - [ ] Testing
 	 - [ ] Media Library page
 	 - [ ] Post editor

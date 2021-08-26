@@ -1,21 +1,21 @@
-# Copyright (C) 2019 Jörn Lund
-# This file is distributed under the same license as the PDF Renderer plugin.
+# Copyright (C) 2021 Jörn Lund
+# This file is distributed under the GPL3.
 msgid ""
 msgstr ""
-"Project-Id-Version: PDF Renderer 0.0.9\n"
+"Project-Id-Version: PDF-Renderer 0.0.9\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/pdf-renderer\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2019-08-02T17:51:11+00:00\n"
+"POT-Creation-Date: 2021-08-26T15:21:41+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.2.0\n"
+"X-Generator: WP-CLI 2.5.1-alpha-0d94e07\n"
 "X-Domain: pdf-renderer\n"
 
 #. Plugin Name of the plugin
-msgid "PDF Renderer"
+msgid "PDF-Renderer"
 msgstr ""
 
 #. Plugin URI of the plugin
@@ -34,34 +34,42 @@ msgstr ""
 msgid "https://github.com/mcguffin"
 msgstr ""
 
-#: include/template/pdf-page-item-tpl.php:14
-msgid "Page %s"
-msgstr ""
-
-#: include/PDFRenderer/Admin/Admin.php:67
+#: include/PDFRenderer/Admin/Admin.php:65
 msgid "Blah blah … and click Proceed to continue"
 msgstr ""
 
-#: include/PDFRenderer/Admin/Admin.php:68
+#: include/PDFRenderer/Admin/Admin.php:66
 msgid "Upload"
 msgstr ""
 
-#: include/PDFRenderer/Admin/Admin.php:69
+#: include/PDFRenderer/Admin/Admin.php:67
 msgid "PDF Upload"
 msgstr ""
 
-#: include/PDFRenderer/Admin/Admin.php:70
+#: include/PDFRenderer/Admin/Admin.php:68
 msgid "Cancel Upload"
 msgstr ""
 
-#: include/PDFRenderer/Admin/Admin.php:71
+#: include/PDFRenderer/Admin/Admin.php:69
 msgid "Upload as PDF"
 msgstr ""
 
-#: include/PDFRenderer/Admin/Admin.php:72
+#: include/PDFRenderer/Admin/Admin.php:70
 msgid "Upload Images"
 msgstr ""
 
-#: include/PDFRenderer/Admin/Admin.php:73
+#: include/PDFRenderer/Admin/Admin.php:71
 msgid "Page"
+msgstr ""
+
+#: include/template/pdf-modal-tpl.php:9
+msgid "Close"
+msgstr ""
+
+#: include/template/pdf-modal-tpl.php:12
+msgid "Attachment Details"
+msgstr ""
+
+#: include/template/pdf-page-item-tpl.php:14
+msgid "Page %s"
 msgstr ""

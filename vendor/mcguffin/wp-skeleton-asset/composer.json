@@ -1,0 +1,16 @@
+{
+    "name": "mcguffin/wp-skeleton-asset",
+    "description": "WP Plugin Component implementing Script and Style asset handling",
+    "type": "wordpress-library",
+    "license": "GPL-3.0-or-later",
+    "minimum-stability": "stable",
+	"version":"0.0.1",
+    "autoload": {
+        "psr-4": {
+            "McGuffin\\Asset\\": "src/"
+        }
+    },
+    "require": {
+		"mcguffin/wp-skeleton-core": "dev-main"
+	}
+}

@@ -1,0 +1,65 @@
+<?php return array(
+    'root' => array(
+        'pretty_version' => 'dev-master',
+        'version' => 'dev-master',
+        'type' => 'wordpress-plugin',
+        'install_path' => __DIR__ . '/../../',
+        'aliases' => array(),
+        'reference' => '4d42cc3cf7859b10d020cf81d890f563eccd8891',
+        'name' => 'mcguffin/pdf-renderer',
+        'dev' => false,
+    ),
+    'versions' => array(
+        'intervention/httpauth' => array(
+            'pretty_version' => '3.0.3',
+            'version' => '3.0.3.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../intervention/httpauth',
+            'aliases' => array(),
+            'reference' => '7742aa013e1a72f94379cb6623286f06fa1ea5f7',
+            'dev_requirement' => false,
+        ),
+        'mcguffin/pdf-renderer' => array(
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
+            'type' => 'wordpress-plugin',
+            'install_path' => __DIR__ . '/../../',
+            'aliases' => array(),
+            'reference' => '4d42cc3cf7859b10d020cf81d890f563eccd8891',
+            'dev_requirement' => false,
+        ),
+        'mcguffin/wp-skeleton-asset' => array(
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'type' => 'wordpress-library',
+            'install_path' => __DIR__ . '/../mcguffin/wp-skeleton-asset',
+            'aliases' => array(
+                0 => '9999999-dev',
+            ),
+            'reference' => '1c656cc2459e31ec2a2d90d15ec49187956337f0',
+            'dev_requirement' => false,
+        ),
+        'mcguffin/wp-skeleton-core' => array(
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'type' => 'wordpress-library',
+            'install_path' => __DIR__ . '/../mcguffin/wp-skeleton-core',
+            'aliases' => array(
+                0 => '9999999-dev',
+            ),
+            'reference' => '9792c1d724c5fb71518dcc042ffde88ef4ecde02',
+            'dev_requirement' => false,
+        ),
+        'mcguffin/wp-skeleton-plugin' => array(
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'type' => 'wordpress-library',
+            'install_path' => __DIR__ . '/../mcguffin/wp-skeleton-plugin',
+            'aliases' => array(
+                0 => '9999999-dev',
+            ),
+            'reference' => '799fcb689bdc126894236a5d9e9dadd831889630',
+            'dev_requirement' => false,
+        ),
+    ),
+);
