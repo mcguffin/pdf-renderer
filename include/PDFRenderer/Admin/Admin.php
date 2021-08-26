@@ -11,8 +11,9 @@ if ( ! defined('ABSPATH') ) {
 	die('FU!');
 }
 
-use PDFRenderer\Asset;
-use PDFRenderer\Core;
+use PDFRenderer\PDFRenderer;
+use McGuffin\Asset;
+use McGuffin\Core;
 
 
 class Admin extends Core\Singleton {
@@ -23,7 +24,7 @@ class Admin extends Core\Singleton {
 	 */
 	protected function __construct() {
 
-		$this->core = Core\Core::instance();
+		$this->core = PDFRenderer::instance();
 
 		add_action( 'print_media_templates', [ $this, 'print_media_templates' ] );
 
@@ -36,7 +37,7 @@ class Admin extends Core\Singleton {
 	 */
 	function print_media_templates() {
 		// cropping tool
-		$rp = $this->core->get_plugin_dir() . 'include' . DIRECTORY_SEPARATOR . '/template/{,*/,*/*/,*/*/*/}*.php';
+	$rp = $this->core->get_package_dir() . 'include' . DIRECTORY_SEPARATOR . '/template/{,*/,*/*/,*/*/*/}*.php';
 		foreach ( glob( $rp, GLOB_BRACE ) as $template_file ) {
 			include $template_file;
 		}
@@ -48,16 +49,18 @@ class Admin extends Core\Singleton {
 	 */
 	public function enqueue_assets() {
 
-		Asset\Asset::get('css/admin/media.css')
+		$factory = Asset\Factory::get( $this->core );
+
+		$factory->asset('css/admin/media.css' )
 			->enqueue();
 
-		Asset\Asset::get('js/admin/media.js')
-			->deps( array(
+		$factory->asset('js/admin/media.js' )
+			->deps( [
 				'jquery',
 				'media-grid',
-				Asset\Asset::get('js/pdf/pdf.min.js')->register()->handle
-			) )
-			->localize( array(
+				$factory->asset('js/pdf/pdf.min.js' )->register()->handle
+			] )
+			->localize( [
 				'l10n'	=> [
 					'pdfInstructions'	=> __( 'Blah blah … and click Proceed to continue','pdf-renderer' ),
 					'Upload'			=> __( 'Upload', 'pdf-renderer' ),
@@ -71,8 +74,9 @@ class Admin extends Core\Singleton {
 					'image_width'	=> apply_filters( 'pdf_renderer_image_width', $this->get_max_image_width() ),
 					'image_type'	=> apply_filters( 'pdf_renderer_image_type', 'image/png' ),
 					'jpeg_quality'	=> apply_filters( 'jpeg_quality', 82, 'pdf_renderer' ),
+					'worker_url'	=> $factory->asset('js/pdf/pdf.worker.min.js' )->url,
 				],
-			), 'pdf_renderer' )
+			], 'pdf_renderer' )
 			->enqueue();
 	}
 

@@ -11,6 +11,6 @@ if ( ! defined('ABSPATH') )
 		<span class="dashicons dashicons-minus"></span>
 	</label>
 	<label for="show-{{{ data.pagenum }}}">
-		<?php printf(__('Page %s', 'pdf-renderer' ),'{{{ data.pagenum }}}'); ?>
+		<?php printf(esc_html__('Page %s', 'pdf-renderer' ),'{{{ data.pagenum }}}'); ?>
 	</label>
 </script>

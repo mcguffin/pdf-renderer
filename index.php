@@ -42,12 +42,14 @@ namespace PDFRenderer;
 if ( ! defined('ABSPATH') ) {
 	die('FU!');
 }
-
+use McGuffin\Core;
 
 require_once __DIR__ . DIRECTORY_SEPARATOR . 'include/autoload.php';
 require_once __DIR__ . DIRECTORY_SEPARATOR . 'vendor/autoload.php';
 
-Core\Core::instance( __FILE__ );
+
+PDFRenderer::instance()->bootstrap( __FILE__ );
+
 
 if ( is_admin() || defined( 'DOING_AJAX' ) ) {
 	Admin\Admin::instance();

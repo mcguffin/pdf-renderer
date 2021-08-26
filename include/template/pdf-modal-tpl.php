@@ -6,10 +6,10 @@ if ( ! defined('ABSPATH') )
 ?>
 <script type="text/html" id="tmpl-pdf-modal">
 	<div class="media-modal pdf-modal wp-core-ui">
-		<button type="button" class="media-modal-close"><span class="media-modal-icon"><span class="screen-reader-text"><?php _e('Close'); ?></span></span></button>
+		<button type="button" class="media-modal-close"><span class="media-modal-icon"><span class="screen-reader-text"><?php esc_html_e( 'Close', 'pdf-renderer' ); ?></span></span></button>
 		<div class="media-modal-content">
 			<div class="media-frame-title">
-				<h1><?php _e( 'Attachment Details', 'wp-robocrop' ) ?></h1>
+				<h1><?php esc_html_e( 'Attachment Details', 'pdf-renderer' ) ?></h1>
 			</div>
 			<div class="media-frame-content">
 			</div>
