@@ -1,7 +1,7 @@
 {
   "name": "pdf-renderer",
-  "version": "0.1.0",
-  "description": "Plugin description",
+  "version": "0.0.9",
+  "description": "WordPress plugin to convert PDFs to Images before uploading them",
   "private": true,
   "scripts": {
     "dev": "gulp dev",
@@ -88,7 +88,6 @@
     "build": {
       "versionedFiles": null,
       "prebuild": [
-        "npm upgrade pdfjs",
         "wp i18n make-pot . languages/pdf-renderer.pot --domain=pdf-renderer --exclude=tmp",
         "composer install --no-dev",
         "sed -i '' 's/vendor\\//#vendor\\//g' .gitignore"

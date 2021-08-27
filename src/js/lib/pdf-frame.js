@@ -13,7 +13,9 @@ module.exports = wp.media.view.MediaFrame.extend({
 		'click .media-modal-close' : function() {
 			this.trigger('cancel-upload');
 			this.reset().close();
-		}
+		},
+		'click [data-action="select-all"]' : 'selectAll',
+		'click [data-action="unselect-all"]' : 'unselectAll'
 	},
 	_state: 'pdf-frame',
 	initialize: function() {
@@ -74,7 +76,14 @@ module.exports = wp.media.view.MediaFrame.extend({
 		return this;
 
 	},
-
+	render:function() {
+		const ret = wp.media.view.MediaFrame.prototype.render.apply(this,arguments);
+		this.$(`[name="pdf-renderer-fileformat"][value="${options.image_type}"]`).prop('checked',true)
+		return ret;
+	},
+	getImageType:function() {
+		return this.$('[name="pdf-renderer-fileformat"]:checked').val();
+	},
 	reset: function() {
 		this.actionBtn.forEach( btn => btn.$el.prop( 'disabled', false ) )
 		this.title.set([]);
@@ -127,7 +136,7 @@ module.exports = wp.media.view.MediaFrame.extend({
 	},
 	renderPageNav:function(numPages) {
 		const self = this, btns = [];
-		let m, i = 1;
+		let m, i = 1, pgItem;
 
 		while ( this._pages.length ) {
 			this._pages.pop();
@@ -139,27 +148,35 @@ module.exports = wp.media.view.MediaFrame.extend({
 				selected:true,
 			});
 			this._pages.add( m );
-
-			btns.push(
-				new PageItem({
-					pagenum:i,
-					selected:true,
-					model:m,
-					events:{
-						'change [type="radio"]' : function(){
-							if ( this.$('[type="radio"]').prop('checked') ) {
-								self.showPage( this.options.pagenum );
-							}
-						},
-						'change [type="checkbox"]' : function(){
-							this.model.set( 'selected', this.$('[type="checkbox"]').prop('checked') );
+			pgItem = new PageItem({
+				pagenum:i,
+				selected:true,
+				model:m,
+				events:{
+					'change [type="radio"]' : function(){
+						if ( this.$('[type="radio"]').prop('checked') ) {
+							self.showPage( this.options.pagenum );
 						}
+					},
+					'change [type="checkbox"]' : function(){
+						this.model.set( 'selected', this.$('[type="checkbox"]').prop('checked') );
 					}
-				})
-			);
-
+				}
+			});
+			m.set( 'pageItem', pgItem );
+			btns.push( pgItem );
 		}
 		this.pagenav.set( btns );
+	},
+	selectAll:function() {
+		this.$('.pdf-page-item > [type="checkbox"]').each((i,el) => {
+			$(el).prop('checked',true).trigger('change')
+		})
+	},
+	unselectAll:function() {
+		this.$('.pdf-page-item > [type="checkbox"]').each((i,el) => {
+			$(el).prop('checked',false).trigger('change')
+		})
 	},
 	parsePDF: function( arr ) {
 		const self = this;
@@ -206,29 +223,38 @@ module.exports = wp.media.view.MediaFrame.extend({
 			canvas.width = vp.width;
 			canvas.height = vp.height;
 
-			await page.render({
+			page.render({
 				canvasContext: ctx,
 				viewport: vp,
+			}).promise.then(() => {
+				m.set( 'page', page );
+				m.set( 'canvas', canvas );
+				!!cb && cb.apply(m,cb_args||[]);
 			});
 
-			m.set( 'page', page );
-			m.set( 'canvas', canvas );
-
-			!!cb && cb.apply(m,cb_args||[]);
 
 		})();
 	},
 
 	uploadImages:function() {
 		const self = this,
-			type = options.image_type,
+			type = self.getImageType(),
 			upload = function( name ) {
+
 				const img = new o.Image(),
 					m = this;
+
 				img.onload = () => {
+
 					img.name = name;
 					img.type = type;
-					self.options.uploader.addFile( img.getAsBlob(), name );
+
+					if ( type === 'image/jpeg' ) {
+						self.options.uploader.addFile( img.getAsBlob( type, options.jpeg_quality * 0.01 ), name );
+					} else {
+						self.options.uploader.addFile( img.getAsBlob( type ), name );
+					}
+
 
 					m.set( 'selected', false );
 
@@ -239,19 +265,17 @@ module.exports = wp.media.view.MediaFrame.extend({
 					}
 				}
 
-				img.load( this.get('canvas').toDataURL( options.image_type, options.jpeg_quality * 0.01 ) );
+				img.load( this.get('canvas').toDataURL( type ) );
 				//
 				$('body').append(img);
 			};
 
 		this.actionBtn.forEach( btn => btn.$el.prop('disabled',true) )
 
-		_.each(  );
 		// create e new media model from blob data URL thingy
-
 		_.each( this._pages.where( { selected: true } ), ( pg, i ) => {
 
-			const name = self.file.file.name.replace(/\.[a-z0-9]+$/,'') + '-p' + i + '.png';
+			const name = self.file.file.name.replace(/\.[a-z0-9]+$/,'') + '-p' + i + '.' + ( 'image/png'  === type ? 'png' : 'jpg' );
 
 			if ( ! pg.get('canvas') ) {
 				// needs rendering
@@ -260,5 +284,6 @@ module.exports = wp.media.view.MediaFrame.extend({
 				upload.apply(pg,[name])
 			}
 		});
+		this.reset().close()
 	}
 });

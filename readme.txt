@@ -1,15 +1,15 @@
 === PDF Renderer ===
-Contributors: #### Your wordpress.org Username ####
-Donate link: #### donate link ####
-Tags: #### donate link ####
-Requires at least: 3.8
-Requires PHP: 5.3
-Tested up to: 4.9
+Contributors: podpirate
+Donate link: https://www.msf.org/donate
+Tags: pdf,upload,convert,image
+Requires at least: 5.0
+Requires PHP: 7.0
+Tested up to: 5.8
 Stable tag: 0.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-#### Short Description ####
+Convert PDFs to Images before uploading them
 
 == Description ==
 

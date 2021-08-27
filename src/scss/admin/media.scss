@@ -27,8 +27,24 @@
 			font-size:18px;
 			float:left;
 		}
+		.select-tools {
+			width:184px;
+		}
+		.tools {
+			display:inline-block;
+			vertical-align: middle;
+		}
+		[data-action] {
+			display:block;
+		}
 	}
+	.media-frame-toolbar {
 
+	}
+	.media-frame-options {
+		margin:15px 16px;
+		float:left;
+	}
 	.media-frame-buttons {
 		margin:15px 16px;
 		float:right;

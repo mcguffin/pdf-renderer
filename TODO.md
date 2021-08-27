@@ -4,9 +4,9 @@ PDF Renderer TODO
  - [x] Reset on close (can't select a second time)
  - [x] Boilerplate 3
  - [ ] UI
-	 - [ ] Modal
-		 - [ ] Image format (jpg/png)
-		 - [ ] De-/Select all
+	 - [x] Modal
+		 - [x] Select Image format (jpg/png)
+		 - [x] De-/Select all
 	 - [ ] Block Editor:
 		 - [ ] Image block: 
 		 	- [ ] Drop on block: temporarily allow pdfs
@@ -14,7 +14,6 @@ PDF Renderer TODO
 		 - [ ] Drop on Page: show dialog
  - [ ] Proper filenames or attachment titles
  - [ ] Refactor pdf-frame.js
- - [ ] Bug: black images after popup is closed
  - [ ] Testing
 	 - [ ] Media Library page
 	 - [ ] Post editor

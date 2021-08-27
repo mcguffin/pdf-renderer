@@ -1,6 +1,6 @@
 {
     "name": "mcguffin/pdf-renderer",
-    "description": "WordPress plugin to convert pdf uploads to image files",
+    "description": "WordPress plugin to convert PDFs to Images before uploading them",
     "type": "wordpress-plugin",
     "license": "GPL-3.0-or-later",
     "minimum-stability": "dev",

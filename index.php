@@ -2,8 +2,9 @@
 
 /*
 Plugin Name: PDF-Renderer
-Plugin URI: http://wordpress.org/
-Description: Enter description here.
+Description: WordPress plugin to convert PDFs to Images before uploading them
+Plugin URI: https://github.com/mcguffin/pdf-renderer
+Github Plugin URI: https://github.com/mcguffin/pdf-renderer
 Author: Jörn Lund
 Version: 0.1.0
 Author URI: https://github.com/mcguffin
@@ -15,7 +16,7 @@ Text Domain: pdf-renderer
 Domain Path: /languages/
 */
 
-/*  Copyright 2019 Jörn Lund
+/*  Copyright 2021 Jörn Lund
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License, version 2, as
