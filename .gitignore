@@ -50,7 +50,7 @@ node_modules
 # assets/dist
 
 # Composer
-###vendor/
+##vendor/
 
 # phpcs
 phpcs-report.txt
