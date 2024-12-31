@@ -18,6 +18,8 @@ use McGuffin\Core;
 
 class Admin extends Core\Singleton {
 
+	/** @var PDFRenderer\PDFRenderer */
+	private $core;
 
 	/**
 	 *	@inheritdoc
@@ -37,8 +39,8 @@ class Admin extends Core\Singleton {
 	 */
 	function print_media_templates() {
 		// cropping tool
-	$rp = $this->core->get_package_dir() . 'include' . DIRECTORY_SEPARATOR . '/template/{,*/,*/*/,*/*/*/}*.php';
-		foreach ( glob( $rp, GLOB_BRACE ) as $template_file ) {
+		$rp = $this->core->get_package_dir() . 'include/template/*.php';
+		foreach ( glob( $rp ) as $template_file ) {
 			include $template_file;
 		}
 	}

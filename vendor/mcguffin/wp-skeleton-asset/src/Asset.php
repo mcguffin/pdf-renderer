@@ -1,15 +1,11 @@
 <?php
 /**
- *	@package PDFRenderer\Asset
+ *	@package McGuffin\Asset
  *	@version 1.0.1
  *	2018-09-22
  */
 
 namespace McGuffin\Asset;
-
-if ( ! defined('ABSPATH') ) {
-	die('FU!');
-}
 
 use McGuffin\Core;
 
@@ -20,7 +16,7 @@ use McGuffin\Core;
  *	Usage
  *	-----
  *	<?php
- *
+ *	use McGuffin\Asset;
  *	// will throw exception if 'js/some-js-file.js' is not there!
  *	$some_asset = Asset\Asset::get( 'js/some-js-file.js' )
  *		// wrapper to wp_localize_script()
@@ -83,7 +79,7 @@ class Asset {
 	private $registered = false;
 
 	/**
-	 *	@var Core\CoreInterface
+	 *	@var McGuffin\Core\CoreInterface
 	 */
 	private $core = null;
 

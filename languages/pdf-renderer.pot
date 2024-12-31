@@ -1,64 +1,69 @@
-# Copyright (C) 2021 Jörn Lund
+# Copyright (C) 2024 Jörn Lund
 # This file is distributed under the GPL3.
 msgid ""
 msgstr ""
-"Project-Id-Version: PDF-Renderer 0.1.0\n"
+"Project-Id-Version: PDF-Renderer 0.0.9\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/pdf-renderer\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-08-26T15:22:52+00:00\n"
+"POT-Creation-Date: 2024-12-31T15:24:25+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.5.1-alpha-0d94e07\n"
+"X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: pdf-renderer\n"
 
 #. Plugin Name of the plugin
+#: index.php
 msgid "PDF-Renderer"
 msgstr ""
 
 #. Plugin URI of the plugin
-msgid "http://wordpress.org/"
+#: index.php
+msgid "https://github.com/mcguffin/pdf-renderer"
 msgstr ""
 
 #. Description of the plugin
-msgid "Enter description here."
+#: index.php
+msgid "WordPress plugin to convert PDFs to Images before uploading them"
 msgstr ""
 
 #. Author of the plugin
+#: index.php
 msgid "Jörn Lund"
 msgstr ""
 
 #. Author URI of the plugin
+#: index.php
 msgid "https://github.com/mcguffin"
 msgstr ""
 
-#: include/PDFRenderer/Admin/Admin.php:65
+#: include/PDFRenderer/Admin/Admin.php:67
 msgid "Blah blah … and click Proceed to continue"
 msgstr ""
 
-#: include/PDFRenderer/Admin/Admin.php:66
+#: include/PDFRenderer/Admin/Admin.php:68
 msgid "Upload"
 msgstr ""
 
-#: include/PDFRenderer/Admin/Admin.php:67
+#: include/PDFRenderer/Admin/Admin.php:69
 msgid "PDF Upload"
 msgstr ""
 
-#: include/PDFRenderer/Admin/Admin.php:68
+#: include/PDFRenderer/Admin/Admin.php:70
 msgid "Cancel Upload"
 msgstr ""
 
-#: include/PDFRenderer/Admin/Admin.php:69
+#: include/PDFRenderer/Admin/Admin.php:71
 msgid "Upload as PDF"
 msgstr ""
 
-#: include/PDFRenderer/Admin/Admin.php:70
+#: include/PDFRenderer/Admin/Admin.php:72
 msgid "Upload Images"
 msgstr ""
 
-#: include/PDFRenderer/Admin/Admin.php:71
+#: include/PDFRenderer/Admin/Admin.php:73
 msgid "Page"
 msgstr ""
 
@@ -70,6 +75,27 @@ msgstr ""
 msgid "Attachment Details"
 msgstr ""
 
-#: include/template/pdf-page-item-tpl.php:14
+#: include/template/pdf-modal-tpl.php:20
+msgid "Select all"
+msgstr ""
+
+#: include/template/pdf-modal-tpl.php:21
+msgid "Unselect all"
+msgstr ""
+
+#: include/template/pdf-modal-tpl.php:24
+msgid "File Format"
+msgstr ""
+
+#: include/template/pdf-modal-tpl.php:25
+msgid "PNG"
+msgstr ""
+
+#: include/template/pdf-modal-tpl.php:26
+msgid "JPEG"
+msgstr ""
+
+#. translators: page number
+#: include/template/pdf-page-item-tpl.php:16
 msgid "Page %s"
 msgstr ""

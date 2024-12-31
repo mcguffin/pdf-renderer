@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import PDFFrame from 'pdf-frame.js';
+import { PDFFrame } from 'pdf-frame.js';
 import { pdfAllowed, l10n } from 'misc.js';
 
 

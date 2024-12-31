@@ -1,36 +1,52 @@
 {
-    "name": "mcguffin/pdf-renderer",
-    "description": "WordPress plugin to convert PDFs to Images before uploading them",
-    "type": "wordpress-plugin",
-    "license": "GPL-3.0-or-later",
-    "minimum-stability": "dev",
-    "require": {
-        "intervention/httpauth": "^3.0",
-		"mcguffin/wp-skeleton-asset": "dev-main",
-		"mcguffin/wp-skeleton-plugin": "dev-main"
+  "name": "mcguffin/pdf-renderer",
+  "description": "WordPress plugin to convert PDFs to Images before uploading them",
+  "type": "wordpress-plugin",
+  "license": "GPL-3.0-or-later",
+  "minimum-stability": "dev",
+  "require": {
+    "intervention/httpauth": "^3.0",
+    "mcguffin/wp-skeleton-asset": "dev-main",
+    "mcguffin/wp-skeleton-plugin": "dev-main",
+    "composer/installers": "~1.2|^2",
+    "php": ">=7.4.33|^8"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^8.5|^9.6",
+    "squizlabs/php_codesniffer": "*",
+    "wp-coding-standards/wpcs": "*",
+    "yoast/phpunit-polyfills": "^3.0"
+  },
+  "repositories": [
+    {
+      "type": "vcs",
+      "url":"git@github.com:mcguffin/wp-skeleton-asset.git"
     },
-	"require-dev": {
-		"squizlabs/php_codesniffer": "*",
-		"wp-coding-standards/wpcs": "*",
-		"phpcompatibility/php-compatibility": "*",
-		"pheromone/phpcs-security-audit":"*"
-	},
-	"repositories": [
-		{
-			"type": "vcs",
-			"url":"git@github.com:mcguffin/wp-skeleton-asset.git"
-		},
-		{
-			"type": "vcs",
-			"url":"git@github.com:mcguffin/wp-skeleton-core.git"
-		},
-		{
-			"type": "vcs",
-			"url":"git@github.com:mcguffin/wp-skeleton-plugin.git"
-		},
-		{
-			"type": "vcs",
-			"url":"git@github.com:mcguffin/wp-skeleton-theme.git"
-		}
-	]
+    {
+      "type": "vcs",
+      "url":"git@github.com:mcguffin/wp-skeleton-core.git"
+    },
+    {
+      "type": "vcs",
+      "url":"git@github.com:mcguffin/wp-skeleton-plugin.git"
+    },
+    {
+      "type": "vcs",
+      "url":"git@github.com:mcguffin/wp-skeleton-theme.git"
+    }
+  ],
+  "scripts": {
+    "post-install-cmd": [
+      "[ -f vendor/bin/phpcs ] && \"vendor/bin/phpcs\" --config-set installed_paths vendor/wp-coding-standards/wpcs || true"
+    ],
+    "post-update-cmd": [
+      "[ -f vendor/bin/phpcs ] && \"vendor/bin/phpcs\" --config-set installed_paths vendor/wp-coding-standards/wpcs || true"
+    ]
+  },
+  "config": {
+    "allow-plugins": {
+      "composer/installers": true,
+      "dealerdirect/phpcodesniffer-composer-installer": true
+    }
+  }
 }

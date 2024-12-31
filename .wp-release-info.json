@@ -1,0 +1,9 @@
+{
+  "id": "https://github.com/mcguffin/pdf-renderer/raw/master/.wp-release-info.json",
+  "slug": "pdf-renderer",
+  "version": "0.0.9",
+  "url": "https://github.com/mcguffin/pdf-renderer",
+  "package": "https://github.com/mcguffin/pdf-renderer/releases/download/0.0.9/pdf-renderer.zip",
+  "tested": "5.8",
+  "requires_php": "7.0"
+}

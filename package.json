@@ -4,79 +4,61 @@
   "description": "WordPress plugin to convert PDFs to Images before uploading them",
   "private": true,
   "scripts": {
-    "dev": "gulp dev",
-    "test": "node ./src/run/test.js",
+    "dev": "npm-run-all --parallel dev:scss dev:js dev:lint",
+    "dev:scss": "sass --watch ./src/scss/:./css/ --load-path=node_modules/",
+    "dev:js": "webpack watch --output-path ./js --config ./webpack.config.js --mode development",
+    "dev:lint": "node ./src/run/lint.js --watch",
+    "build": "npm run build:lint && npm-run-all --parallel build:scss build:js build:i18n",
+    "build:scss": "rm -rf ./js && sass ./src/scss/:./css/ --load-path=node_modules/ --style=compressed",
+    "build:js": "rm -rf ./js && webpack build --output-path ./js --config ./webpack.config.js --mode production",
+    "build:lint": "node ./src/run/lint.js",
+    "build:i18n": "npm-run-all --serial build:i18n:json build:i18n:pot",
+    "build:i18n:pot": "php -d memory_limit=1G $(which wp) i18n make-pot . languages/pdf-renderer.pot --domain=pdf-renderer --exclude=tmp --exclude=vendor --exclude=test --exclude=tests",
+    "build:i18n:json": "node ./src/run/i18n-json-strings.js",
+    "uitest": "echo \"Running UI Tests. Press ^C to stop\" && node --watch ./src/run/test.js start && node ./src/run/test.js stop",
+    "test": "npm-run-all --serial test:legacy test:edge",
+    "test:edge": "WP_ENV_PHP_VERSION=8.3 wp-env start && wp-env run cli php -v && npm run test:phpunit",
+    "test:legacy": "WP_ENV_PHP_VERSION=7.4 wp-env start && wp-env run cli php -v && npm run test:phpunit",
+    "test:phpunit": "wp-env run tests-cli --env-cwd=wp-content/plugins/pdf-renderer vendor/bin/phpunit --",
     "dev-test": "./src/run/dev-test.sh",
     "dashicons": "node ./src/run/dashicons.js",
-    "i18n": "wp i18n make-pot . languages/pdf-renderer.pot --domain=pdf-renderer --exclude=tmp/*",
-    "ver": "echo \"<?php return $(jq .version < ./package.json);\" > include/version.php",
+    "rollback": "git reset --hard HEAD~ && git push origin +master",
     "postinstall": "composer install",
-    "audit": "./vendor/squizlabs/php_codesniffer/bin/phpcs . --report=code --standard=./phpcs-security.ruleset.xml -n -s > ./phpcs-report.txt || exit 0",
-    "rollback": "git reset --hard HEAD~ && git push origin +master"
+    "audit": "./vendor/squizlabs/php_codesniffer/bin/phpcs . --report=code --standard=./phpcs.ruleset.xml -n -s > ./phpcs-report.txt || exit 0",
+    "ver": "echo \"<?php return $(jq .version < ./package.json);\" > include/version.php"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com//pdf-renderer.git"
+    "url": "git+https://github.com/mcguffin/pdf-renderer.git"
   },
   "author": "Jörn Lund",
-  "license": "ISC",
+  "license": "GPL-3.0-or-later",
   "bugs": {
-    "url": "https://github.com//pdf-renderer/issues"
+    "url": "https://github.com/mcguffin/pdf-renderer/issues"
   },
-  "homepage": "https://github.com//pdf-renderer#readme",
+  "homepage": "https://github.com/mcuffin/pdf-renderer#readme",
   "browserslist": [
     "last 3 versions",
-    "> 0.25%",
-    "IE 10"
+    "> 0.125%"
   ],
   "browserify-shim": {
     "jquery": "global:jQuery",
     "moxie": "global:mOxie"
   },
   "devDependencies": {
-    "@babel/core": "^7.15.0",
-    "@babel/plugin-proposal-class-properties": "^7.14.5",
-    "@babel/plugin-proposal-object-rest-spread": "^7.14.7",
-    "@babel/plugin-transform-react-jsx": "^7.14.9",
-    "@babel/preset-env": "^7.15.0",
-    "babelify": "^10.0.0",
-    "browserify": "^17.0.0",
-    "browserify-shim": "^3.8.14",
-    "event-stream": "^4.0.1",
-    "gulp": "^4.0.2",
-    "gulp-autoprefixer": "^8.0.0",
-    "gulp-sass": "^5.0.0",
-    "gulp-sourcemaps": "^3.0.0",
-    "gulp-uglify": "^3.0.2",
-    "pdfjs-dist": "^2.9.359",
-    "sass": "^1.38.1",
-    "vinyl-buffer": "^1.0.1",
-    "vinyl-source-stream": "^2.0.0"
+    "@babel/preset-env": "*",
+    "@wordpress/env": "^10.14.0",
+    "colors": "^1.4.0",
+    "jsonlint": "^1.6.3",
+    "leaflet": "1.9.4",
+    "leaflet-control-geocoder": "^3.1.0",
+    "leaflet.locatecontrol": "^0.82.0",
+    "npm-run-all": "^4.1.5",
+    "pdfjs-dist": "^4.9.155",
+    "sass": "*",
+    "webpack-cli": "^6.0.1"
   },
   "engines": {},
-  "wpPlugin": {
-    "components": {
-      "core": {
-        "components": [],
-        "flags": []
-      },
-      "admin": {
-        "components": {},
-        "flags": [
-          "css",
-          "js"
-        ]
-      }
-    },
-    "name": "PDF-Renderer",
-    "slug": "pdf-renderer",
-    "prefix": "pdf_renderer",
-    "textdomain": "pdf-renderer",
-    "namespace": "PDFRenderer",
-    "author": "mcguffin",
-    "author_uri": "https://github.com/mcguffin",
-    "year": 2019
-  },
   "wporg": {
     "steps": [
       "build",
@@ -89,12 +71,11 @@
     "build": {
       "versionedFiles": null,
       "prebuild": [
-        "wp i18n make-pot . languages/pdf-renderer.pot --domain=pdf-renderer --exclude=tmp",
         "composer install --no-dev",
         "sed -i '' 's/vendor\\//#vendor\\//g' .gitignore"
       ],
       "build": [
-        "gulp build",
+        "npm run build",
         "npm run ver"
       ]
     },

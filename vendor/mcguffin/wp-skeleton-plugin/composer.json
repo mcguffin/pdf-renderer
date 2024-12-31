@@ -1,16 +1,16 @@
 {
-    "name": "mcguffin/wp-skeleton-plugin",
-    "description": "WP Plugin Component Plugin Core",
-    "type": "wordpress-library",
-    "license": "GPL-3.0-or-later",
-    "minimum-stability": "stable",
-	"version":"0.0.1",
-    "autoload": {
-        "psr-4": {
-            "McGuffin\\Plugin\\": "src/"
-        }
-    },
-    "require": {
-		"mcguffin/wp-skeleton-core": "dev-main"
-	}
+  "name": "mcguffin/wp-skeleton-plugin",
+  "description": "WP Plugin Component Plugin Core",
+  "type": "wordpress-library",
+  "license": "GPL-3.0-or-later",
+  "minimum-stability": "stable",
+  "version":"0.0.2",
+  "autoload": {
+    "psr-4": {
+      "McGuffin\\Plugin\\": "src/"
+    }
+  },
+  "require": {
+    "mcguffin/wp-skeleton-core": "dev-main"
+  }
 }

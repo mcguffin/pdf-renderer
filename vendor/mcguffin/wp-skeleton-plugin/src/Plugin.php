@@ -1,15 +1,11 @@
 <?php
 /**
- *	@package PDFRenderer\Core
+ *	@package McGuffin\Core
  *	@version 1.0.0
  *	2018-09-22
  */
 
 namespace McGuffin\Plugin;
-
-if ( ! defined('ABSPATH') ) {
-	die('FU!');
-}
 
 use McGuffin\Core;
 

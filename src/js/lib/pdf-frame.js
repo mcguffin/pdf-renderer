@@ -1,11 +1,11 @@
 import $ from 'jquery';
 import o from 'moxie';
-import PageItem from 'page-item.js';
+import { PageItem } from 'page-item.js';
 import { pdfAllowed, l10n, options } from 'misc.js';
 
 pdfjsLib.GlobalWorkerOptions.workerSrc = options.worker_url;
 
-module.exports = wp.media.view.MediaFrame.extend({
+const PDFFrame = wp.media.view.MediaFrame.extend({
 	template: wp.template('pdf-modal'),
 	regions: [ 'title','content','instructions','buttons', 'pagenav' ],
 	events: {
@@ -240,34 +240,17 @@ module.exports = wp.media.view.MediaFrame.extend({
 		const self = this,
 			type = self.getImageType(),
 			upload = function( name ) {
+				const m = this;
 
-				const img = new o.Image(),
-					m = this;
+				this.get('canvas').toBlob( function(blob) {
 
-				img.onload = () => {
+					const file = new File( [blob], name, { type } );
 
-					img.name = name;
-					img.type = type;
-
-					if ( type === 'image/jpeg' ) {
-						self.options.uploader.addFile( img.getAsBlob( type, options.jpeg_quality * 0.01 ), name );
-					} else {
-						self.options.uploader.addFile( img.getAsBlob( type ), name );
-					}
-
-
+					self.options.uploader.addFile( file );
 					m.set( 'selected', false );
 
-					if ( ! self._pages.where( { selected: true } ).length ) {
-						// trigger something
-						self.trigger('complete');
-						self.reset().close();
-					}
-				}
+				}, type, options.jpeg_quality * 0.01 )
 
-				img.load( this.get('canvas').toDataURL( type ) );
-				//
-				$('body').append(img);
 			};
 
 		this.actionBtn.forEach( btn => btn.$el.prop('disabled',true) )
@@ -287,3 +270,5 @@ module.exports = wp.media.view.MediaFrame.extend({
 		this.reset().close()
 	}
 });
+
+export { PDFFrame }

@@ -1,6 +1,155 @@
 {
     "packages": [
         {
+            "name": "composer/installers",
+            "version": "dev-main",
+            "version_normalized": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/composer/installers.git",
+                "reference": "5b390889ecbb17bfa69ed5a030fa2e6075a19ba0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/composer/installers/zipball/5b390889ecbb17bfa69ed5a030fa2e6075a19ba0",
+                "reference": "5b390889ecbb17bfa69ed5a030fa2e6075a19ba0",
+                "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "^1.0 || ^2.0",
+                "php": "^7.2 || ^8.0"
+            },
+            "require-dev": {
+                "composer/composer": "^1.10.27 || ^2.7.8",
+                "composer/semver": "^1.7.2 || ^3.4.2",
+                "phpstan/phpstan": "^1.11.11",
+                "phpstan/phpstan-phpunit": "^1.4",
+                "phpunit/phpunit": "^8.5.39 || ^9.6.20",
+                "symfony/process": "^5 || ^6 || ^7.1.3"
+            },
+            "time": "2024-11-26T13:24:01+00:00",
+            "default-branch": true,
+            "type": "composer-plugin",
+            "extra": {
+                "class": "Composer\\Installers\\Plugin",
+                "branch-alias": {
+                    "dev-main": "2.x-dev"
+                },
+                "plugin-modifies-install-path": true
+            },
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Composer\\Installers\\": "src/Composer/Installers"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kyle Robinson Young",
+                    "email": "kyle@dontkry.com",
+                    "homepage": "https://github.com/shama"
+                }
+            ],
+            "description": "A multi-framework Composer library installer",
+            "keywords": [
+                "Dolibarr",
+                "Eliasis",
+                "Hurad",
+                "ImageCMS",
+                "Kanboard",
+                "Lan Management System",
+                "MODX Evo",
+                "MantisBT",
+                "Mautic",
+                "Maya",
+                "OXID",
+                "Plentymarkets",
+                "Porto",
+                "RadPHP",
+                "SMF",
+                "Starbug",
+                "Thelia",
+                "Whmcs",
+                "WolfCMS",
+                "agl",
+                "annotatecms",
+                "attogram",
+                "bitrix",
+                "cakephp",
+                "chef",
+                "cockpit",
+                "codeigniter",
+                "concrete5",
+                "concreteCMS",
+                "croogo",
+                "dokuwiki",
+                "drupal",
+                "eZ Platform",
+                "elgg",
+                "expressionengine",
+                "fuelphp",
+                "grav",
+                "installer",
+                "itop",
+                "known",
+                "kohana",
+                "laravel",
+                "lavalite",
+                "lithium",
+                "magento",
+                "majima",
+                "mako",
+                "matomo",
+                "mediawiki",
+                "miaoxing",
+                "modulework",
+                "modx",
+                "moodle",
+                "osclass",
+                "pantheon",
+                "phpbb",
+                "piwik",
+                "ppi",
+                "processwire",
+                "puppet",
+                "pxcms",
+                "reindex",
+                "roundcube",
+                "shopware",
+                "silverstripe",
+                "sydes",
+                "sylius",
+                "tastyigniter",
+                "wordpress",
+                "yawik",
+                "zend",
+                "zikula"
+            ],
+            "support": {
+                "issues": "https://github.com/composer/installers/issues",
+                "source": "https://github.com/composer/installers/tree/main"
+            },
+            "funding": [
+                {
+                    "url": "https://packagist.com",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/composer",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/composer/composer",
+                    "type": "tidelift"
+                }
+            ],
+            "install-path": "./installers"
+        },
+        {
             "name": "intervention/httpauth",
             "version": "3.0.3",
             "version_normalized": "3.0.3.0",
@@ -26,12 +175,12 @@
             "type": "library",
             "extra": {
                 "laravel": {
-                    "providers": [
-                        "Intervention\\HttpAuth\\Laravel\\HttpAuthServiceProvider"
-                    ],
                     "aliases": {
                         "HttpAuth": "Intervention\\HttpAuth\\Laravel\\Facades\\HttpAuth"
-                    }
+                    },
+                    "providers": [
+                        "Intervention\\HttpAuth\\Laravel\\HttpAuthServiceProvider"
+                    ]
                 }
             },
             "installation-source": "dist",
@@ -71,18 +220,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/mcguffin/wp-skeleton-asset.git",
-                "reference": "1c656cc2459e31ec2a2d90d15ec49187956337f0"
+                "reference": "fa232b4a74fba971416705217c42b149da83653a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mcguffin/wp-skeleton-asset/zipball/1c656cc2459e31ec2a2d90d15ec49187956337f0",
-                "reference": "1c656cc2459e31ec2a2d90d15ec49187956337f0",
+                "url": "https://api.github.com/repos/mcguffin/wp-skeleton-asset/zipball/fa232b4a74fba971416705217c42b149da83653a",
+                "reference": "fa232b4a74fba971416705217c42b149da83653a",
                 "shasum": ""
             },
             "require": {
                 "mcguffin/wp-skeleton-core": "dev-main"
             },
-            "time": "2021-08-26T15:01:02+00:00",
+            "time": "2024-12-31T15:08:44+00:00",
             "default-branch": true,
             "type": "wordpress-library",
             "installation-source": "dist",
@@ -108,15 +257,15 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/mcguffin/wp-skeleton-core.git",
-                "reference": "9792c1d724c5fb71518dcc042ffde88ef4ecde02"
+                "reference": "ae8d20d3ca6288308271ffef5e99ad8b3b137547"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mcguffin/wp-skeleton-core/zipball/9792c1d724c5fb71518dcc042ffde88ef4ecde02",
-                "reference": "9792c1d724c5fb71518dcc042ffde88ef4ecde02",
+                "url": "https://api.github.com/repos/mcguffin/wp-skeleton-core/zipball/ae8d20d3ca6288308271ffef5e99ad8b3b137547",
+                "reference": "ae8d20d3ca6288308271ffef5e99ad8b3b137547",
                 "shasum": ""
             },
-            "time": "2021-08-26T12:09:59+00:00",
+            "time": "2024-12-31T15:04:00+00:00",
             "default-branch": true,
             "type": "wordpress-library",
             "installation-source": "dist",
@@ -142,18 +291,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/mcguffin/wp-skeleton-plugin.git",
-                "reference": "799fcb689bdc126894236a5d9e9dadd831889630"
+                "reference": "2fe5e9ee006bc732eec556598ccd29e6693ed41e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mcguffin/wp-skeleton-plugin/zipball/799fcb689bdc126894236a5d9e9dadd831889630",
-                "reference": "799fcb689bdc126894236a5d9e9dadd831889630",
+                "url": "https://api.github.com/repos/mcguffin/wp-skeleton-plugin/zipball/2fe5e9ee006bc732eec556598ccd29e6693ed41e",
+                "reference": "2fe5e9ee006bc732eec556598ccd29e6693ed41e",
                 "shasum": ""
             },
             "require": {
                 "mcguffin/wp-skeleton-core": "dev-main"
             },
-            "time": "2021-08-26T15:08:48+00:00",
+            "time": "2024-12-31T15:05:18+00:00",
             "default-branch": true,
             "type": "wordpress-library",
             "installation-source": "dist",

@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitad50bb1d356e4b20c61c884491713cfd
+class ComposerStaticInit65b1472d8cbf9e43c0dbfec981564be1
 {
     public static $prefixLengthsPsr4 = array (
         'M' => 
@@ -16,6 +16,10 @@ class ComposerStaticInitad50bb1d356e4b20c61c884491713cfd
         'I' => 
         array (
             'Intervention\\HttpAuth\\' => 22,
+        ),
+        'C' => 
+        array (
+            'Composer\\Installers\\' => 20,
         ),
     );
 
@@ -36,6 +40,10 @@ class ComposerStaticInitad50bb1d356e4b20c61c884491713cfd
         array (
             0 => __DIR__ . '/..' . '/intervention/httpauth/src',
         ),
+        'Composer\\Installers\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/composer/installers/src/Composer/Installers',
+        ),
     );
 
     public static $classMap = array (
@@ -45,9 +53,9 @@ class ComposerStaticInitad50bb1d356e4b20c61c884491713cfd
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitad50bb1d356e4b20c61c884491713cfd::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitad50bb1d356e4b20c61c884491713cfd::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInitad50bb1d356e4b20c61c884491713cfd::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit65b1472d8cbf9e43c0dbfec981564be1::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit65b1472d8cbf9e43c0dbfec981564be1::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit65b1472d8cbf9e43c0dbfec981564be1::$classMap;
 
         }, null, ClassLoader::class);
     }
