@@ -5,13 +5,13 @@
   "license": "GPL-3.0-or-later",
   "minimum-stability": "dev",
   "require": {
-    "intervention/httpauth": "^3.0",
     "mcguffin/wp-skeleton-asset": "dev-main",
     "mcguffin/wp-skeleton-plugin": "dev-main",
-    "composer/installers": "~1.2|^2",
     "php": ">=7.4.33|^8"
   },
   "require-dev": {
+    "intervention/httpauth": "^3.0",
+    "composer/installers": "~1.2|^2",
     "phpunit/phpunit": "^8.5|^9.6",
     "squizlabs/php_codesniffer": "*",
     "wp-coding-standards/wpcs": "*",

@@ -9,6 +9,4 @@ return array(
     'McGuffin\\Plugin\\' => array($vendorDir . '/mcguffin/wp-skeleton-plugin/src'),
     'McGuffin\\Core\\' => array($vendorDir . '/mcguffin/wp-skeleton-core/src'),
     'McGuffin\\Asset\\' => array($vendorDir . '/mcguffin/wp-skeleton-asset/src'),
-    'Intervention\\HttpAuth\\' => array($vendorDir . '/intervention/httpauth/src'),
-    'Composer\\Installers\\' => array($vendorDir . '/composer/installers/src/Composer/Installers'),
 );

@@ -4,8 +4,109 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "65b1472d8cbf9e43c0dbfec981564be1",
+    "content-hash": "0480835b08d9beb90c595a71598eb8c6",
     "packages": [
+        {
+            "name": "mcguffin/wp-skeleton-asset",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mcguffin/wp-skeleton-asset.git",
+                "reference": "fa232b4a74fba971416705217c42b149da83653a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mcguffin/wp-skeleton-asset/zipball/fa232b4a74fba971416705217c42b149da83653a",
+                "reference": "fa232b4a74fba971416705217c42b149da83653a",
+                "shasum": ""
+            },
+            "require": {
+                "mcguffin/wp-skeleton-core": "dev-main"
+            },
+            "default-branch": true,
+            "type": "wordpress-library",
+            "autoload": {
+                "psr-4": {
+                    "McGuffin\\Asset\\": "src/"
+                }
+            },
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "description": "WP Plugin Component implementing Script and Style asset handling",
+            "support": {
+                "source": "https://github.com/mcguffin/wp-skeleton-asset/tree/main",
+                "issues": "https://github.com/mcguffin/wp-skeleton-asset/issues"
+            },
+            "time": "2024-12-31T15:08:44+00:00"
+        },
+        {
+            "name": "mcguffin/wp-skeleton-core",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mcguffin/wp-skeleton-core.git",
+                "reference": "ae8d20d3ca6288308271ffef5e99ad8b3b137547"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mcguffin/wp-skeleton-core/zipball/ae8d20d3ca6288308271ffef5e99ad8b3b137547",
+                "reference": "ae8d20d3ca6288308271ffef5e99ad8b3b137547",
+                "shasum": ""
+            },
+            "default-branch": true,
+            "type": "wordpress-library",
+            "autoload": {
+                "psr-4": {
+                    "McGuffin\\Core\\": "src/"
+                }
+            },
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "description": "WP Plugin Component Core",
+            "support": {
+                "source": "https://github.com/mcguffin/wp-skeleton-core/tree/main",
+                "issues": "https://github.com/mcguffin/wp-skeleton-core/issues"
+            },
+            "time": "2024-12-31T15:04:00+00:00"
+        },
+        {
+            "name": "mcguffin/wp-skeleton-plugin",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mcguffin/wp-skeleton-plugin.git",
+                "reference": "2fe5e9ee006bc732eec556598ccd29e6693ed41e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mcguffin/wp-skeleton-plugin/zipball/2fe5e9ee006bc732eec556598ccd29e6693ed41e",
+                "reference": "2fe5e9ee006bc732eec556598ccd29e6693ed41e",
+                "shasum": ""
+            },
+            "require": {
+                "mcguffin/wp-skeleton-core": "dev-main"
+            },
+            "default-branch": true,
+            "type": "wordpress-library",
+            "autoload": {
+                "psr-4": {
+                    "McGuffin\\Plugin\\": "src/"
+                }
+            },
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "description": "WP Plugin Component Plugin Core",
+            "support": {
+                "source": "https://github.com/mcguffin/wp-skeleton-plugin/tree/main",
+                "issues": "https://github.com/mcguffin/wp-skeleton-plugin/issues"
+            },
+            "time": "2024-12-31T15:05:18+00:00"
+        }
+    ],
+    "packages-dev": [
         {
             "name": "composer/installers",
             "version": "dev-main",
@@ -153,168 +254,6 @@
             "time": "2024-11-26T13:24:01+00:00"
         },
         {
-            "name": "intervention/httpauth",
-            "version": "3.0.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Intervention/httpauth.git",
-                "reference": "7742aa013e1a72f94379cb6623286f06fa1ea5f7"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Intervention/httpauth/zipball/7742aa013e1a72f94379cb6623286f06fa1ea5f7",
-                "reference": "7742aa013e1a72f94379cb6623286f06fa1ea5f7",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^7.3|^8.0"
-            },
-            "require-dev": {
-                "phpstan/phpstan": "^0.12.11",
-                "phpunit/phpunit": "^9.0"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "aliases": {
-                        "HttpAuth": "Intervention\\HttpAuth\\Laravel\\Facades\\HttpAuth"
-                    },
-                    "providers": [
-                        "Intervention\\HttpAuth\\Laravel\\HttpAuthServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Intervention\\HttpAuth\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Oliver Vogel",
-                    "email": "oliver@olivervogel.com",
-                    "homepage": "https://olivervogel.com/"
-                }
-            ],
-            "description": "HTTP authentication (Basic & Digest) including ServiceProviders for easy Laravel integration",
-            "homepage": "https://github.com/Intervention/httpauth",
-            "keywords": [
-                "Authentication",
-                "http",
-                "laravel"
-            ],
-            "support": {
-                "issues": "https://github.com/Intervention/httpauth/issues",
-                "source": "https://github.com/Intervention/httpauth/tree/3.0.3"
-            },
-            "time": "2021-01-22T15:08:35+00:00"
-        },
-        {
-            "name": "mcguffin/wp-skeleton-asset",
-            "version": "dev-main",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/mcguffin/wp-skeleton-asset.git",
-                "reference": "fa232b4a74fba971416705217c42b149da83653a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/mcguffin/wp-skeleton-asset/zipball/fa232b4a74fba971416705217c42b149da83653a",
-                "reference": "fa232b4a74fba971416705217c42b149da83653a",
-                "shasum": ""
-            },
-            "require": {
-                "mcguffin/wp-skeleton-core": "dev-main"
-            },
-            "default-branch": true,
-            "type": "wordpress-library",
-            "autoload": {
-                "psr-4": {
-                    "McGuffin\\Asset\\": "src/"
-                }
-            },
-            "license": [
-                "GPL-3.0-or-later"
-            ],
-            "description": "WP Plugin Component implementing Script and Style asset handling",
-            "support": {
-                "source": "https://github.com/mcguffin/wp-skeleton-asset/tree/main",
-                "issues": "https://github.com/mcguffin/wp-skeleton-asset/issues"
-            },
-            "time": "2024-12-31T15:08:44+00:00"
-        },
-        {
-            "name": "mcguffin/wp-skeleton-core",
-            "version": "dev-main",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/mcguffin/wp-skeleton-core.git",
-                "reference": "ae8d20d3ca6288308271ffef5e99ad8b3b137547"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/mcguffin/wp-skeleton-core/zipball/ae8d20d3ca6288308271ffef5e99ad8b3b137547",
-                "reference": "ae8d20d3ca6288308271ffef5e99ad8b3b137547",
-                "shasum": ""
-            },
-            "default-branch": true,
-            "type": "wordpress-library",
-            "autoload": {
-                "psr-4": {
-                    "McGuffin\\Core\\": "src/"
-                }
-            },
-            "license": [
-                "GPL-3.0-or-later"
-            ],
-            "description": "WP Plugin Component Core",
-            "support": {
-                "source": "https://github.com/mcguffin/wp-skeleton-core/tree/main",
-                "issues": "https://github.com/mcguffin/wp-skeleton-core/issues"
-            },
-            "time": "2024-12-31T15:04:00+00:00"
-        },
-        {
-            "name": "mcguffin/wp-skeleton-plugin",
-            "version": "dev-main",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/mcguffin/wp-skeleton-plugin.git",
-                "reference": "2fe5e9ee006bc732eec556598ccd29e6693ed41e"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/mcguffin/wp-skeleton-plugin/zipball/2fe5e9ee006bc732eec556598ccd29e6693ed41e",
-                "reference": "2fe5e9ee006bc732eec556598ccd29e6693ed41e",
-                "shasum": ""
-            },
-            "require": {
-                "mcguffin/wp-skeleton-core": "dev-main"
-            },
-            "default-branch": true,
-            "type": "wordpress-library",
-            "autoload": {
-                "psr-4": {
-                    "McGuffin\\Plugin\\": "src/"
-                }
-            },
-            "license": [
-                "GPL-3.0-or-later"
-            ],
-            "description": "WP Plugin Component Plugin Core",
-            "support": {
-                "source": "https://github.com/mcguffin/wp-skeleton-plugin/tree/main",
-                "issues": "https://github.com/mcguffin/wp-skeleton-plugin/issues"
-            },
-            "time": "2024-12-31T15:05:18+00:00"
-        }
-    ],
-    "packages-dev": [
-        {
             "name": "dealerdirect/phpcodesniffer-composer-installer",
             "version": "v1.0.0",
             "source": {
@@ -461,6 +400,67 @@
                 }
             ],
             "time": "2024-12-16T19:06:38+00:00"
+        },
+        {
+            "name": "intervention/httpauth",
+            "version": "3.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Intervention/httpauth.git",
+                "reference": "7742aa013e1a72f94379cb6623286f06fa1ea5f7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Intervention/httpauth/zipball/7742aa013e1a72f94379cb6623286f06fa1ea5f7",
+                "reference": "7742aa013e1a72f94379cb6623286f06fa1ea5f7",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.3|^8.0"
+            },
+            "require-dev": {
+                "phpstan/phpstan": "^0.12.11",
+                "phpunit/phpunit": "^9.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "aliases": {
+                        "HttpAuth": "Intervention\\HttpAuth\\Laravel\\Facades\\HttpAuth"
+                    },
+                    "providers": [
+                        "Intervention\\HttpAuth\\Laravel\\HttpAuthServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Intervention\\HttpAuth\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Oliver Vogel",
+                    "email": "oliver@olivervogel.com",
+                    "homepage": "https://olivervogel.com/"
+                }
+            ],
+            "description": "HTTP authentication (Basic & Digest) including ServiceProviders for easy Laravel integration",
+            "homepage": "https://github.com/Intervention/httpauth",
+            "keywords": [
+                "Authentication",
+                "http",
+                "laravel"
+            ],
+            "support": {
+                "issues": "https://github.com/Intervention/httpauth/issues",
+                "source": "https://github.com/Intervention/httpauth/tree/3.0.3"
+            },
+            "time": "2021-01-22T15:08:35+00:00"
         },
         {
             "name": "myclabs/deep-copy",

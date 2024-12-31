@@ -6,7 +6,7 @@ Description: WordPress plugin to convert PDFs to Images before uploading them
 Plugin URI: https://github.com/mcguffin/pdf-renderer
 Github Plugin URI: https://github.com/mcguffin/pdf-renderer
 Author: Jörn Lund
-Version: 0.0.9
+Version: 0.2.0
 Author URI: https://github.com/mcguffin
 License: GPL3
 Requires WP: 5.0

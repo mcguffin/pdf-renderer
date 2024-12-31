@@ -1,6 +1,6 @@
 {
   "name": "pdf-renderer",
-  "version": "0.0.9",
+  "version": "0.2.0",
   "description": "WordPress plugin to convert PDFs to Images before uploading them",
   "private": true,
   "scripts": {
@@ -70,11 +70,9 @@
     "type": "plugin",
     "build": {
       "versionedFiles": null,
-      "prebuild": [
-        "composer install --no-dev",
-        "sed -i '' 's/vendor\\//#vendor\\//g' .gitignore"
-      ],
+      "prebuild": [],
       "build": [
+        "sed -i '' 's/vendor\\//#vendor\\//g' .gitignore",
         "npm run build",
         "npm run ver"
       ]
@@ -93,7 +91,9 @@
       "assets": ".wporg"
     },
     "test": [
-      "npm run test"
+      "composer install",
+      "npm run test",
+      "composer install --no-dev"
     ]
   }
 }

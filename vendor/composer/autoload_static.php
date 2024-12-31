@@ -13,14 +13,6 @@ class ComposerStaticInit65b1472d8cbf9e43c0dbfec981564be1
             'McGuffin\\Core\\' => 14,
             'McGuffin\\Asset\\' => 15,
         ),
-        'I' => 
-        array (
-            'Intervention\\HttpAuth\\' => 22,
-        ),
-        'C' => 
-        array (
-            'Composer\\Installers\\' => 20,
-        ),
     );
 
     public static $prefixDirsPsr4 = array (
@@ -35,14 +27,6 @@ class ComposerStaticInit65b1472d8cbf9e43c0dbfec981564be1
         'McGuffin\\Asset\\' => 
         array (
             0 => __DIR__ . '/..' . '/mcguffin/wp-skeleton-asset/src',
-        ),
-        'Intervention\\HttpAuth\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/intervention/httpauth/src',
-        ),
-        'Composer\\Installers\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/composer/installers/src/Composer/Installers',
         ),
     );
 
