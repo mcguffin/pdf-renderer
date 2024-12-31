@@ -9,11 +9,11 @@ Author: Jörn Lund
 Version: 0.1.0
 Author URI: https://github.com/mcguffin
 License: GPL3
-GitHub Plugin URI: mcguffin/pdf-renderer
 Requires WP: 5.0
-Requires PHP: 7.0
+Requires PHP: 7.4
 Text Domain: pdf-renderer
 Domain Path: /languages/
+Update URI: https://github.com/mcguffin/pdf-renderer/raw/master/.wp-release-info.json
 */
 
 /*  Copyright 2021 Jörn Lund
@@ -32,12 +32,6 @@ Domain Path: /languages/
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-/*
-Plugin was generated with Jörn Lund's WP Skelton
-https://github.com/mcguffin/wp-skeleton
-*/
-
-
 namespace PDFRenderer;
 
 if ( ! defined('ABSPATH') ) {
@@ -55,3 +49,19 @@ PDFRenderer::instance()->bootstrap( __FILE__ );
 if ( is_admin() || defined( 'DOING_AJAX' ) ) {
 	Admin\Admin::instance();
 }
+
+// Enable WP auto update
+add_filter( 'update_plugins_github.com', function( $update, $plugin_data, $plugin_file, $locales ) {
+
+	if ( ! preg_match( "@{$plugin_file}$@", __FILE__ ) ) { // not our plugin
+		return $update;
+	}
+
+	$response = wp_remote_get( $plugin_data['UpdateURI'] );
+
+	if ( is_wp_error( $response ) || wp_remote_retrieve_response_code( $response ) > 200 ) { // response error
+		return $update;
+	}
+
+	return json_decode( wp_remote_retrieve_body( $response ), true, 512 );
+}, 10, 4 );

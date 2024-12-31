@@ -80,6 +80,7 @@
   "wporg": {
     "steps": [
       "build",
+      "test",
       "git",
       "github",
       "post"
@@ -109,6 +110,9 @@
     },
     "wporg": {
       "assets": ".wporg"
-    }
+    },
+    "test": [
+      "npm run test"
+    ]
   }
 }

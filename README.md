@@ -11,9 +11,11 @@ PDF-Contents: cc-by [Creative Commons](https://creativecommons.org/)
 Installation
 ------------
 
-### Production (using Github Updater – recommended for Multisite)
- - Install [Andy Fragen's GitHub Updater](https://github.com/afragen/github-updater) first.
- - In WP Admin go to Settings / GitHub Updater / Install Plugin. Enter `mcguffin/pdf-renderer` as a Plugin-URI.
+### Production
+ - Head over to [releases](../../releases)
+ - Download 'pdf-renderer.zip'
+ - Upload and activate it like any other WordPress plugin
+ - AutoUpdate will run as long as the plugin is active
 
 ### Development
  - cd into your plugin directory
