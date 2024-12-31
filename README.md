@@ -17,7 +17,12 @@ Installation
  - Upload and activate it like any other WordPress plugin
  - AutoUpdate will run as long as the plugin is active
 
-### Development
+#### Using composer
+```
+composer require mcguffin/pdf-renderer
+```
+
+### For Development
  - cd into your plugin directory
  - $ `git clone git@github.com:mcguffin/pdf-renderer.git`
  - $ `cd pdf-renderer`
@@ -58,4 +63,43 @@ add_filter( 'jpeg_quality', function( $quality, $context = '' ) {
 	}
 	return $quality;
 }, 10, 2);
+```
+
+Development
+-----------
+npm scripts:
+
+ - `npm run audit`: Run phpcs audit
+ - `npm run build`: Build css and js from sources
+ - `npm run dev`: Watch css and js source dirs
+ - `npm run dashicons`: Generate dashicons scss variables from source
+ - `npm run i18n`: generate `.pot` file
+ - `npm run rollback`: remove last commit (local and remote  – use with caution!)
+ - `npm run test`: run unit tests against PHP 7.4 and 8.3
+ - `npm run test:edge`: run unit tests against PHP 8.3 only
+ - `npm run test:legacy`: run unit tests against PHP 7.4 only
+
+Testing
+-------
+### Unit Tests
+Unit tests are run in [wordpress/env](https://www.npmjs.com/package/@wordpress/env/v/2.0.0), which is basically a docker container. [Docker Desktop](https://docs.docker.com/desktop/) is required.
+
+Unit tests are run against PHP 7.4 (legacy) and 8.3 (edge).  
+
+**Run them all:**
+```shell
+npm run test
+```
+
+**Run edge tests only:**
+```shell
+npm run test:edge
+```
+
+**Configure edge test and run something in wp-cli in the docker container:**
+```shell
+npm run test:set-edge
+npm run test:reset-env
+wp-env run cli wp core version
+> 6.7.1
 ```

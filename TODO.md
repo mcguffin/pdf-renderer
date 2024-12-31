@@ -1,23 +1,12 @@
 PDF Renderer TODO
 =================
- - [x] ESNext
- - [x] Reset on close (can't select a second time)
- - [x] Boilerplate 3
- - [ ] UI
-	 - [x] Modal
-		 - [x] Select Image format (jpg/png)
-		 - [x] De-/Select all
-	 - [ ] Block Editor:
-		 - [ ] Image block: 
-		 	- [ ] Drop on block: temporarily allow pdfs
-		 	- [ ] Select from library > Drop PDF: allow only one page! Disallow pdf.
-		 - [ ] Drop on Page: show dialog
- - [ ] Proper filenames or attachment titles
+ - [ ] Support webp
  - [ ] Refactor pdf-frame.js
  - [ ] Testing
-	 - [ ] Media Library page
-	 - [ ] Post editor
+	 - [x] Media Library page
+	 - [x] Post editor
 	 - [ ] With ACF Image + Gallery field
+	 	- [ ] upload succeeds, progress not removed – maybe complete not triggered?
  - [ ] Design wporg assets
  - [ ] wporg readme
  - [ ] submit to wporg
